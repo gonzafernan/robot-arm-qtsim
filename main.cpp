@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 
 #include "baserobot.h"
+#include "widget.h"
 
 int main(int argc, char **argv){
     QApplication app(argc, argv);
@@ -59,6 +60,10 @@ int main(int argc, char **argv){
 
     widget->show();
     widget->resize(1200, 800);
+
+    Widget *w = new Widget();
+    w->getRender(br);
+    w->show();
 
 
     return app.exec();

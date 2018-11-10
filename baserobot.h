@@ -30,6 +30,8 @@ class BaseRobot {
         virtual ~BaseRobot();
         Qt3DCore::QEntity *init();
 
+        void turnON();
+
     private:
         Elemento *p1;
         Elemento *p2;

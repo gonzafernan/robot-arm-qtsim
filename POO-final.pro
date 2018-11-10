@@ -27,15 +27,18 @@ SOURCES += \
         main.cpp \
     baserobot.cpp \
     elemento.cpp \
-    controller.cpp
+    controller.cpp \
+    widget.cpp
 
 HEADERS += \
     baserobot.h \
     elemento.h \
-    controller.h
+    controller.h \
+    widget.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

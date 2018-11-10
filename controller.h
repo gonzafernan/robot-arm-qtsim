@@ -33,6 +33,9 @@ class Controller : public QObject {
         void setAngle(float angle);
         float angle() const;
 
+        void setAxis(QVector3D naxis);
+        void setPoint(QVector3D npoint);
+
     signals:
         void targetChanged();
         void angleChanged();
@@ -44,7 +47,10 @@ class Controller : public QObject {
         Qt3DCore::QTransform *m_target;
         QMatrix4x4 m_matrix;
         float m_angle;
-        QObject *rotateQML;
+
+        // Parámetros del sistema de referencia para la rotación
+        QVector3D axis;
+        QVector3D point;
 
 };
 

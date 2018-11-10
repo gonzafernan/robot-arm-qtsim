@@ -10,6 +10,8 @@ Controller::Controller(QObject *parent) : QObject(parent)
   , m_target(nullptr)
   , m_matrix()
   , m_angle(0.0f){
+    this->axis = QVector3D(0.0f, 1.0f, 0.0f);
+    this->point = QVector3D(0.0f, 0.0f, 0.0f);
 }
 
 void Controller::setTarget(Qt3DCore::QTransform *target){
@@ -36,14 +38,21 @@ float Controller::angle() const {
 }
 
 void Controller::updateMatrix(){
-    float global_positionX = 0.65f;
-    //float global_positionY = -10.0f;
-    float global_positionZ = 0.01f;
     m_matrix.setToIdentity();
-    m_matrix.translate(global_positionX, -10.0f, global_positionZ);
-    m_matrix.rotate(m_angle, QVector3D(0.0f, 1.0f, 0.0f));
-    m_matrix.translate(-global_positionX, 0.0f, -global_positionZ);
+    m_matrix.translate(this->point.x(), this->point.y() - 10.0f, this->point.z());
+    //m_matrix.translate(this->point);
+    m_matrix.rotate(m_angle, this->axis);
+    m_matrix.translate(-this->point.x(), -this->point.y(), -this->point.z());
+    //m_matrix.translate(-this->point);
     m_target->setMatrix(m_matrix);
+}
+
+void Controller::setAxis(QVector3D naxis){
+    this->axis = naxis;
+}
+
+void Controller::setPoint(QVector3D npoint){
+    this->point = npoint;
 }
 
 QT_END_NAMESPACE

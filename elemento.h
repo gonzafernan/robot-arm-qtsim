@@ -21,15 +21,24 @@ class Elemento : public QObject {
         explicit Elemento(Qt3DCore::QEntity *rootEntity, QUrl url);
         ~Elemento();
 
+        void animate(int start, int end, int duration); // Analizar grados de inicio y final como float
+        // Duración en milisegundos!
+
+        void setAxis(QVector3D naxis);
+        void setPoint(QVector3D npoint);
+
+        Controller *controller;
+
+    private:
+        Qt3DCore::QEntity *m_rootEntity;
+
         Qt3DCore::QEntity *entity;
         Qt3DRender::QMesh *mesh;
         Qt3DCore::QTransform *transform;
         Qt3DExtras::QPhongMaterial *material;
         QPropertyAnimation *animation;
-        Controller *controller;
 
-    private:
-        Qt3DCore::QEntity *m_rootEntity;
+        void update(Qt3DCore::QEntity *root_entity);
 };
 
 #endif // SCENEMODIFIER_H

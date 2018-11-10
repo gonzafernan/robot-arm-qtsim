@@ -23,19 +23,34 @@ Elemento::Elemento(Qt3DCore::QEntity *rootEntity, QUrl url)
 
     this->animation = new QPropertyAnimation(this->transform);
     this->animation->setTargetObject(this->controller);
-    this->animation->setPropertyName("angle");
-    this->animation->setStartValue(QVariant::fromValue(0));
-    this->animation->setEndValue(QVariant::fromValue(360));
-    this->animation->setDuration(10000);
-    this->animation->setLoopCount(-1);
-    this->animation->start();
 
-    this->entity = new Qt3DCore::QEntity(m_rootEntity);
-    this->entity->addComponent(this->mesh);
-    this->entity->addComponent(this->material);
-    this->entity->addComponent(this->transform);
+    update(m_rootEntity);
 
 }
 
 Elemento::~Elemento(){
+}
+
+void Elemento::update(Qt3DCore::QEntity *root_entity){
+    this->entity = new Qt3DCore::QEntity(root_entity);
+    this->entity->addComponent(this->mesh);
+    this->entity->addComponent(this->material);
+    this->entity->addComponent(this->transform);
+}
+
+void Elemento::animate(int start, int end, int duration){
+    this->animation->setPropertyName("angle");
+    this->animation->setStartValue(QVariant::fromValue(start));
+    this->animation->setEndValue(QVariant::fromValue(end));
+    this->animation->setDuration(duration);
+    this->animation->setLoopCount(1);
+    this->animation->start();
+}
+
+void Elemento::setAxis(QVector3D naxis){
+    this->controller->setAxis(naxis);
+}
+
+void Elemento::setPoint(QVector3D npoint){
+    this->controller->setPoint(npoint);
 }
