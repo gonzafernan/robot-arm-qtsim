@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/pieza1.obj</file>
+        <file>assets/pieza2.obj</file>
+        <file>assets/pieza3.obj</file>
+        <file>assets/pieza4.obj</file>
+        <file>assets/pieza5.obj</file>
+    </qresource>
+</RCC>
