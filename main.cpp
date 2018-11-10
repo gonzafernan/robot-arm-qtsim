@@ -1,11 +1,12 @@
 #include <QGuiApplication>
 
-#include "createscene.h"
+#include "baserobot.h"
 
 int main(int argc, char **argv){
     QApplication app(argc, argv);
 
-    Qt3DCore::QEntity *scene = createScene();
+    BaseRobot *br = new BaseRobot();
+    Qt3DCore::QEntity *scene = br->init();
 
     Qt3DExtras::Qt3DWindow *view = new Qt3DExtras::Qt3DWindow();
     view->defaultFrameGraph()->setClearColor(QColor(QRgb(0x4d4d4f)));

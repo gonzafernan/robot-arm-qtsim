@@ -25,14 +25,14 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-    scenemodifier.cpp \
-    createscene.cpp \
-    pieza.cpp
+    baserobot.cpp \
+    elemento.cpp \
+    controller.cpp
 
 HEADERS += \
-    scenemodifier.h \
-    createscene.h \
-    pieza.h
+    baserobot.h \
+    elemento.h \
+    controller.h
 
 FORMS += \
         mainwindow.ui
