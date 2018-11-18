@@ -3,10 +3,14 @@
 
 #include <QWidget>
 #include <QSlider>
+#include <iostream>
+
+#include "ui_widget.h"
 
 #include "baserobot.h"
 #include "modooperacion.h"
 #include "filemanager.h"
+#include "datalist.h"
 
 namespace Ui {
 class Widget;
@@ -35,6 +39,8 @@ private slots:
     void on_Archivos_clicked();
 
     void on_EXIT_clicked();
+
+    void on_Data_clicked();
 
 private:
     Ui::Widget *ui;

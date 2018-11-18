@@ -31,7 +31,8 @@ SOURCES += \
     widget.cpp \
     m_function.cpp \
     modooperacion.cpp \
-    filemanager.cpp
+    filemanager.cpp \
+    datalist.cpp
 
 HEADERS += \
     baserobot.h \
@@ -40,13 +41,15 @@ HEADERS += \
     widget.h \
     m_function.h \
     modooperacion.h \
-    filemanager.h
+    filemanager.h \
+    datalist.h
 
 FORMS += \
         mainwindow.ui \
     widget.ui \
     modooperacion.ui \
-    filemanager.ui
+    filemanager.ui \
+    datalist.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

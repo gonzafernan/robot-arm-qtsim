@@ -73,7 +73,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="CARACT">
+    <widget class="QPushButton" name="Data">
      <property name="text">
       <string>ESTABLECER CARACTERÍSTICAS INICIALES</string>
      </property>

@@ -1,7 +1,4 @@
 #include "widget.h"
-#include "ui_widget.h"
-
-#include <iostream>
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -12,8 +9,7 @@ Widget::Widget(QWidget *parent) :
     setWindowTitle("Programación Orientada a Objetos");
 }
 
-Widget::~Widget()
-{
+Widget::~Widget(){
     delete ui;
 }
 
@@ -47,14 +43,21 @@ void Widget::on_gdl3_valueChanged(int value){
 void Widget::on_selectMode_clicked(){
     ModoOperacion *mode = new ModoOperacion();
     mode->show();
-    std::cout << "Modo de Operacion" << std::endl;
+    std::cout << "Select mode" << std::endl;
 }
 
 void Widget::on_Archivos_clicked(){
     FileManager *file_manager = new FileManager();
     file_manager->show();
+    std::cout << "Select file" << std::endl;
 }
 
 void Widget::on_EXIT_clicked(){
     this->hide();
+}
+
+void Widget::on_Data_clicked(){
+    DataList *data = new DataList();
+    data->show();
+    std::cout << "List data" << std::endl;
 }
