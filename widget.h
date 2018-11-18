@@ -22,19 +22,17 @@ public:
 public slots:
     void on_ACTIVAR_clicked();
     void on_DESACTIVAR_clicked();
-    void angle1_changed();
-    void angle2_changed();
-    void angle3_changed();
+
+private slots:
+    void on_gdl1_valueChanged(int value);
+    void on_gdl2_valueChanged(int value);
+    void on_gdl3_valueChanged(int value);
 
 private:
     Ui::Widget *ui;
     bool estado;
 
     BaseRobot *br;
-
-    QSlider *angle1;
-    QSlider *angle2;
-    QSlider *angle3;
 };
 
 #endif // WIDGET_H

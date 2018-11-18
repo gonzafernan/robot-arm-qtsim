@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>358</width>
-    <height>253</height>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -97,6 +97,27 @@
     <widget class="QPushButton" name="EXIT">
      <property name="text">
       <string>SALIR</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSlider" name="gdl1">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSlider" name="gdl2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QSlider" name="gdl3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>

@@ -21,11 +21,20 @@ class Elemento : public QObject {
         explicit Elemento(Qt3DCore::QEntity *rootEntity, QUrl url);
         ~Elemento();
 
-        void animate(int start, int end, int duration); // Analizar grados de inicio y final como float
+        QPropertyAnimation *animate(int start, int end, int duration); // Analizar grados de inicio y final como float
         // Duración en milisegundos!
 
         void setAxis(QVector3D naxis);
+        QVector3D getAxis();
         void setPoint(QVector3D npoint);
+        QVector3D getPoint();
+
+        int getAngle();
+        int getPrevious_angle();
+        void setAngle(int value);
+        void setPrevious_angle(int value);
+
+        float getCurrentAngle();
 
         Controller *controller;
 
@@ -39,6 +48,9 @@ class Elemento : public QObject {
         QPropertyAnimation *animation;
 
         void update(Qt3DCore::QEntity *root_entity);
+
+        int angle = 0;
+        int previous_angle = 0;
 };
 
 #endif // SCENEMODIFIER_H

@@ -38,13 +38,13 @@ void Elemento::update(Qt3DCore::QEntity *root_entity){
     this->entity->addComponent(this->transform);
 }
 
-void Elemento::animate(int start, int end, int duration){
+QPropertyAnimation *Elemento::animate(int start, int end, int duration){
     this->animation->setPropertyName("angle");
     this->animation->setStartValue(QVariant::fromValue(start));
     this->animation->setEndValue(QVariant::fromValue(end));
     this->animation->setDuration(duration);
     this->animation->setLoopCount(1);
-    this->animation->start();
+    return this->animation;
 }
 
 void Elemento::setAxis(QVector3D naxis){
@@ -53,4 +53,32 @@ void Elemento::setAxis(QVector3D naxis){
 
 void Elemento::setPoint(QVector3D npoint){
     this->controller->setPoint(npoint);
+}
+
+QVector3D Elemento::getAxis(){
+    return this->controller->getAxis();
+}
+
+QVector3D Elemento::getPoint(){
+    return this->controller->getPoint();
+}
+
+int Elemento::getAngle(){
+    return this->angle;
+}
+
+int Elemento::getPrevious_angle(){
+    return this->previous_angle;
+}
+
+void Elemento::setAngle(int value){
+    this->angle = value;
+}
+
+void Elemento::setPrevious_angle(int value){
+    this->previous_angle = value;
+}
+
+float Elemento::getCurrentAngle(){
+    return this->controller->angle();
 }

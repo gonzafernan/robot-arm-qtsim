@@ -55,4 +55,12 @@ void Controller::setPoint(QVector3D npoint){
     this->point = npoint;
 }
 
+QVector3D Controller::getAxis(){
+    return this->axis;
+}
+
+QVector3D Controller::getPoint(){
+    return this->point;
+}
+
 QT_END_NAMESPACE

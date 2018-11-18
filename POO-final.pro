@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT += 3dcore 3drender 3dinput 3dextras core
-QT += widgets
+QT += widgets multimedia
 
 TARGET = POO-final
 TEMPLATE = app
@@ -28,17 +28,19 @@ SOURCES += \
     baserobot.cpp \
     elemento.cpp \
     controller.cpp \
-    widget.cpp
+    widget.cpp \
+    m_function.cpp \
 
 HEADERS += \
     baserobot.h \
     elemento.h \
     controller.h \
-    widget.h
+    widget.h \
+    m_function.h \
 
 FORMS += \
         mainwindow.ui \
-    widget.ui
+    widget.ui \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

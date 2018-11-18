@@ -10,15 +10,6 @@ Widget::Widget(QWidget *parent) :
     estado = false;
     ui->setupUi(this);
     setWindowTitle("Programación Orientada a Objetos");
-
-    this->angle1 = new QSlider(Qt::Horizontal, this);
-    connect(angle1, SIGNAL (sliderReleased()),this, SLOT (angle1_changed()));
-
-    this->angle2 = new QSlider(Qt::Horizontal, this);
-    connect(angle2, SIGNAL (sliderReleased()),this, SLOT (angle2_changed()));
-
-    this->angle3 = new QSlider(Qt::Horizontal, this);
-    connect(angle3, SIGNAL (sliderReleased()),this, SLOT (angle3_changed()));
 }
 
 Widget::~Widget()
@@ -41,14 +32,14 @@ void Widget::on_DESACTIVAR_clicked(){
     this->estado=false;
 }
 
-void Widget::angle1_changed(){
-    std::cout << this->angle1->value() << std::endl;
+void Widget::on_gdl1_valueChanged(int value){
+    this->br->externalGdl1(value);
 }
 
-void Widget::angle2_changed(){
-    std::cout << this->angle2->value() << std::endl;
+void Widget::on_gdl2_valueChanged(int value){
+    this->br->externalGdl2(value);
 }
 
-void Widget::angle3_changed(){
-    std::cout << this->angle3->value() << std::endl;
+void Widget::on_gdl3_valueChanged(int value){
+    this->br->externalGdl3(value);
 }

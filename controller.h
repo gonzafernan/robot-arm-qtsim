@@ -36,6 +36,9 @@ class Controller : public QObject {
         void setAxis(QVector3D naxis);
         void setPoint(QVector3D npoint);
 
+        QVector3D getAxis();
+        QVector3D getPoint();
+
     signals:
         void targetChanged();
         void angleChanged();
@@ -51,7 +54,6 @@ class Controller : public QObject {
         // Parámetros del sistema de referencia para la rotación
         QVector3D axis;
         QVector3D point;
-
 };
 
 QT_END_NAMESPACE
