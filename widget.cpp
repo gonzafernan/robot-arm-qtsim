@@ -43,3 +43,18 @@ void Widget::on_gdl2_valueChanged(int value){
 void Widget::on_gdl3_valueChanged(int value){
     this->br->externalGdl3(value);
 }
+
+void Widget::on_selectMode_clicked(){
+    ModoOperacion *mode = new ModoOperacion();
+    mode->show();
+    std::cout << "Modo de Operacion" << std::endl;
+}
+
+void Widget::on_Archivos_clicked(){
+    FileManager *file_manager = new FileManager();
+    file_manager->show();
+}
+
+void Widget::on_EXIT_clicked(){
+    this->hide();
+}

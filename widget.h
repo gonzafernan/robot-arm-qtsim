@@ -5,6 +5,8 @@
 #include <QSlider>
 
 #include "baserobot.h"
+#include "modooperacion.h"
+#include "filemanager.h"
 
 namespace Ui {
 class Widget;
@@ -27,6 +29,12 @@ private slots:
     void on_gdl1_valueChanged(int value);
     void on_gdl2_valueChanged(int value);
     void on_gdl3_valueChanged(int value);
+
+    void on_selectMode_clicked();
+
+    void on_Archivos_clicked();
+
+    void on_EXIT_clicked();
 
 private:
     Ui::Widget *ui;

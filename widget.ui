@@ -87,7 +87,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="START_SEC">
+    <widget class="QPushButton" name="selectMode">
      <property name="text">
       <string>COMENZAR MOVIMIENTO</string>
      </property>
