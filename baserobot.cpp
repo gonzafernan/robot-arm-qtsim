@@ -63,7 +63,12 @@ void BaseRobot::turnON(){
     */
     // Alarma
     QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
+    this->currentAnimation = homing;
     homing->start();
+}
+
+void BaseRobot::turnOFF(){
+    this->currentAnimation->stop();
 }
 
 void BaseRobot::gdl1Changed(int value){
@@ -121,11 +126,12 @@ void BaseRobot::externalGdl1(int value){
     QParallelAnimationGroup *motion = new QParallelAnimationGroup;
     this->gdl1Changed(value);
 
-    motion->addAnimation(this->p2->animate(this->p2->getPrevious_angle(), this->p2->getAngle(), 3000));
-    motion->addAnimation(this->p3->animate(this->p3->getPrevious_angle(), this->p3->getAngle(), 3000));
-    motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(), this->p4->getAngle(), 3000));
-    motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), 3000));
+    motion->addAnimation(this->p2->animate(this->p2->getPrevious_angle(), this->p2->getAngle(), this->p2->getDuration()));
+    motion->addAnimation(this->p3->animate(this->p3->getPrevious_angle(), this->p3->getAngle(), this->p3->getDuration()));
+    motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(), this->p4->getAngle(), this->p4->getDuration()));
+    motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), this->ef->getDuration()));
 
+    this->currentAnimation = motion;
     motion->start();
 
 }
@@ -139,9 +145,10 @@ void BaseRobot::externalGdl3(int value){
 
     this->gdl3Changed(value);
 
-    motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(), this->p4->getAngle(), 3000));
-    motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), 3000));
+    motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(), this->p4->getAngle(), this->p4->getDuration()));
+    motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), this->ef->getDuration()));
 
+    this->currentAnimation = motion;
     motion->start();
 }
 

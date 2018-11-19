@@ -22,6 +22,7 @@ void Widget::on_ACTIVAR_clicked(){
 void Widget::on_DESACTIVAR_clicked(){
     ui->estado->setText("APAGADO");
     this->estado=false;
+    this->br->turnOFF();
 }
 
 void Widget::on_selectMode_clicked(){

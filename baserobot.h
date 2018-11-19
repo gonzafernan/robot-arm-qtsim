@@ -43,6 +43,7 @@ class BaseRobot {
         Qt3DCore::QEntity *init();
 
         void turnON();
+        void turnOFF();
 
         void gdl1Changed(int value);
         void gdl2Changed(int value);
@@ -62,6 +63,8 @@ class BaseRobot {
         Elemento *p3;
         Elemento *p4;
         Elemento *ef;
+
+        QParallelAnimationGroup *currentAnimation = nullptr;
 
 
 };

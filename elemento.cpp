@@ -75,7 +75,7 @@ void Elemento::setAngle(int value){
     if (this->vel > 0){
         this->duration = static_cast<int>((this->angle - this->previous_angle)*1000*(M_PI/180)/this->vel);
     } else {
-        this->duration = 0;
+        this->duration = static_cast<int>(INFINITY);
     }
 }
 
