@@ -5,8 +5,8 @@
 
 class EfectorFinal : public Elemento {
     public:
-        EfectorFinal();
         explicit EfectorFinal(Qt3DCore::QEntity *rootEntity, QUrl url);
+        virtual ~EfectorFinal();
 
 };
 
