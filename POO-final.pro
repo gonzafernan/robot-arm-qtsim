@@ -33,7 +33,8 @@ SOURCES += \
     modooperacion.cpp \
     filemanager.cpp \
     datalist.cpp \
-    conjuntointerfaz.cpp
+    conjuntointerfaz.cpp \
+    efectorfinal.cpp
 
 HEADERS += \
     baserobot.h \
@@ -44,7 +45,8 @@ HEADERS += \
     modooperacion.h \
     filemanager.h \
     datalist.h \
-    conjuntointerfaz.h
+    conjuntointerfaz.h \
+    efectorfinal.h
 
 FORMS += \
     widget.ui \

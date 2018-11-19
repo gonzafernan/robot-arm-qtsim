@@ -1,7 +1,8 @@
 #include "baserobot.h"
 #include "elemento.h"
+#include "efectorfinal.h"
 
-BaseRobot::BaseRobot() : QObject (){
+BaseRobot::BaseRobot() : QObject() {
 }
 
 BaseRobot::~BaseRobot(){
@@ -26,7 +27,7 @@ Qt3DCore::QEntity *BaseRobot::init(){
     this->p4->setPoint(QVector3D(0.65f, 0.0f, 0.1f));
     this->p4->setVel(0.1);
 
-    this->ef = new Elemento(rootEntity, QUrl(QStringLiteral("qrc:/assets/pieza5.obj")));
+    this->ef = new EfectorFinal(rootEntity, QUrl(QStringLiteral("qrc:/assets/pieza5.obj")));
     this->ef->setPoint(QVector3D(0.65f, 0.0f, 0.1f));
     this->ef->setVel(0.1);
 
