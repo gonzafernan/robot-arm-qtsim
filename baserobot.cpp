@@ -153,17 +153,17 @@ void BaseRobot::externalGdl3(int value){
 }
 
 void BaseRobot::externalV1(double value){
-    std::cout << "V1: " << value << std::endl;
+    std::cout << "V1: " << value/10 << std::endl;
     this->p2->setVel(value);
 }
 
 void BaseRobot::externalV2(double value){
-    std::cout << "V2: " << value << std::endl;
+    std::cout << "V2: " << value/10 << std::endl;
     this->p3->setVel(value);
 }
 
 void BaseRobot::externalV3(double value){
-    std::cout << "V3: " << value << std::endl;
+    std::cout << "V3: " << value/10 << std::endl;
     this->p4->setVel(value);
     this->ef->setVel(value);
 }

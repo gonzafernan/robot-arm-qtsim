@@ -24,8 +24,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Sawasdee</family>
-     <pointsize>25</pointsize>
+     <family>Noto Sans</family>
+     <pointsize>24</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
@@ -136,70 +136,25 @@
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
-    <widget class="QDoubleSpinBox" name="ABa1">
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>360.000000000000000</double>
-     </property>
-     <property name="value">
-      <double>0.000000000000000</double>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_9">
-     <property name="text">
-      <string>°</string>
-     </property>
-    </widget>
+    <widget class="QSpinBox" name="angle1"/>
    </widget>
    <widget class="QSplitter" name="splitter_2">
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
-    <widget class="QDoubleSpinBox" name="ABa2">
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>360.000000000000000</double>
-     </property>
-     <property name="value">
-      <double>90.000000000000000</double>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>°</string>
-     </property>
-    </widget>
+    <widget class="QSpinBox" name="angle2"/>
    </widget>
    <widget class="QSplitter" name="splitter_3">
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
-    <widget class="QDoubleSpinBox" name="ABr">
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>360.000000000000000</double>
-     </property>
-     <property name="value">
-      <double>0.000000000000000</double>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_10">
-     <property name="text">
-      <string>°</string>
-     </property>
-    </widget>
+    <widget class="QSpinBox" name="angle3"/>
    </widget>
    <widget class="QSplitter" name="splitter_4">
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
-    <widget class="QDoubleSpinBox" name="VBa1">
+    <widget class="QDoubleSpinBox" name="v1">
      <property name="minimum">
       <double>0.000000000000000</double>
      </property>
@@ -220,7 +175,7 @@
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
-    <widget class="QDoubleSpinBox" name="VBa2">
+    <widget class="QDoubleSpinBox" name="v2">
      <property name="minimum">
       <double>0.000000000000000</double>
      </property>
@@ -241,7 +196,7 @@
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
-    <widget class="QDoubleSpinBox" name="VBr">
+    <widget class="QDoubleSpinBox" name="v3">
      <property name="maximum">
       <double>5.000000000000000</double>
      </property>
@@ -255,6 +210,19 @@
      </property>
     </widget>
    </widget>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>90</y>
+     <width>16</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>°</string>
+   </property>
   </widget>
  </widget>
  <resources/>
