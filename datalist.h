@@ -4,12 +4,13 @@
 #include <QWidget>
 
 #include "ui_datalist.h"
+#include "conjuntointerfaz.h"
 
 namespace Ui {
     class DataList;
 }
 
-class DataList : public QWidget {
+class DataList : public QWidget, public ConjuntoInterfaz {
 
     Q_OBJECT
 

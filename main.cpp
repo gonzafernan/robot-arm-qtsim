@@ -62,7 +62,7 @@ int main(int argc, char **argv){
     widget->resize(1200, 800);
 
     Widget *w = new Widget();
-    w->getRender(br);
+    w->setData(br);
     w->show();
 
 

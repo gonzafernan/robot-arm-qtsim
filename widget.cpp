@@ -13,10 +13,6 @@ Widget::~Widget(){
     delete ui;
 }
 
-void Widget::getRender(BaseRobot *render){
-    this->br = render;
-}
-
 void Widget::on_ACTIVAR_clicked(){
     ui->estado->setText("ENCENDIDO");
     this->estado=true;
@@ -42,12 +38,14 @@ void Widget::on_gdl3_valueChanged(int value){
 
 void Widget::on_selectMode_clicked(){
     ModoOperacion *mode = new ModoOperacion();
+    mode->setData(this->br);
     mode->show();
     std::cout << "Select mode" << std::endl;
 }
 
 void Widget::on_Archivos_clicked(){
     FileManager *file_manager = new FileManager();
+    file_manager->setData(this->br);
     file_manager->show();
     std::cout << "Select file" << std::endl;
 }
@@ -58,6 +56,7 @@ void Widget::on_EXIT_clicked(){
 
 void Widget::on_Data_clicked(){
     DataList *data = new DataList();
+    data->setData(this->br);
     data->show();
     std::cout << "List data" << std::endl;
 }

@@ -4,12 +4,13 @@
 #include <QWidget>
 
 #include "filemanager.h"
+#include "conjuntointerfaz.h"
 
 namespace Ui {
     class ModoOperacion;
 }
 
-class ModoOperacion : public QWidget{
+class ModoOperacion : public QWidget, public ConjuntoInterfaz {
 
     Q_OBJECT
 

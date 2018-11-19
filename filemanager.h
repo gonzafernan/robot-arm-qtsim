@@ -8,12 +8,13 @@
 #include <QtDebug>
 
 #include "ui_filemanager.h"
+#include "conjuntointerfaz.h"
 
 namespace Ui {
     class FileManager;
 }
 
-class FileManager : public QMainWindow {
+class FileManager : public QMainWindow, public ConjuntoInterfaz {
 
     Q_OBJECT
 

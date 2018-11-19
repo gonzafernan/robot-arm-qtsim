@@ -32,7 +32,8 @@ SOURCES += \
     m_function.cpp \
     modooperacion.cpp \
     filemanager.cpp \
-    datalist.cpp
+    datalist.cpp \
+    conjuntointerfaz.cpp
 
 HEADERS += \
     baserobot.h \
@@ -42,7 +43,8 @@ HEADERS += \
     m_function.h \
     modooperacion.h \
     filemanager.h \
-    datalist.h
+    datalist.h \
+    conjuntointerfaz.h
 
 FORMS += \
         mainwindow.ui \

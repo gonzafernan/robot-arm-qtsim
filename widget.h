@@ -11,19 +11,18 @@
 #include "modooperacion.h"
 #include "filemanager.h"
 #include "datalist.h"
+#include "conjuntointerfaz.h"
 
 namespace Ui {
 class Widget;
 }
 
-class Widget : public QWidget {
+class Widget : public QWidget, public ConjuntoInterfaz {
     Q_OBJECT
 
 public:
     explicit Widget(QWidget *parent = nullptr);
     ~Widget();
-
-    void getRender(BaseRobot *render);
 
 public slots:
     void on_ACTIVAR_clicked();
@@ -45,8 +44,6 @@ private slots:
 private:
     Ui::Widget *ui;
     bool estado;
-
-    BaseRobot *br;
 };
 
 #endif // WIDGET_H
