@@ -71,7 +71,7 @@ class BaseRobot : public QObject {
 
         QParallelAnimationGroup *currentAnimation = nullptr;
 
-
+        enum estado{INACTIVE, ACTIVE, RUNNING} estado = INACTIVE;
 };
 
 #endif // BASEROBOT_H

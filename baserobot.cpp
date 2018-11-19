@@ -35,6 +35,7 @@ Qt3DCore::QEntity *BaseRobot::init(){
 
 void BaseRobot::turnON(){
     std::cout << "ON" << std::endl;
+    this->estado = ACTIVE;
     // ROTACIÓN DEL PRIMER GRADO DE LIBERTAD
     QParallelAnimationGroup *homing = new QParallelAnimationGroup;
     //QObject::connect(homing, SIGNAL(finished()), this, SLOT(animationFlag()));
@@ -68,10 +69,12 @@ void BaseRobot::turnON(){
     this->currentAnimation = homing;
     connect(homing, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
     homing->start();
+    this->estado = RUNNING;
 }
 
 void BaseRobot::turnOFF(){
     this->currentAnimation->stop();
+    this->estado = INACTIVE;
 }
 
 void BaseRobot::gdl1Changed(int value){
@@ -133,7 +136,9 @@ void BaseRobot::externalGdl1(int value){
     motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), this->ef->getDuration()));
 
     this->currentAnimation = motion;
+    connect(motion, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
     motion->start();
+    this->estado = RUNNING;
 }
 
 void BaseRobot::externalGdl2(int value){
@@ -149,7 +154,9 @@ void BaseRobot::externalGdl3(int value){
     motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), this->ef->getDuration()));
 
     this->currentAnimation = motion;
+    connect(motion, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
     motion->start();
+    this->estado = RUNNING;
 }
 
 void BaseRobot::externalV1(double value){
@@ -170,4 +177,5 @@ void BaseRobot::externalV3(double value){
 
 void BaseRobot::endReceiver(){
     std::cout << "END" << std::endl;
+    this->estado = ACTIVE;
 }
