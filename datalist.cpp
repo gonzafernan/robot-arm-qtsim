@@ -29,8 +29,6 @@ void DataList::on_angle2_valueChanged(int arg1){
     this->br->externalGdl2(arg1);
 }
 
-
-
 void DataList::on_angle3_valueChanged(int arg1){
     this->br->externalGdl3(arg1);
 }

@@ -1,32 +1,34 @@
 #include "baserobot.h"
 #include "elemento.h"
 
-BaseRobot::BaseRobot() {
+BaseRobot::BaseRobot() : QObject (){
 }
-
 
 BaseRobot::~BaseRobot(){
-
 }
-
 
 Qt3DCore::QEntity *BaseRobot::init(){
     // Root entity
     Qt3DCore::QEntity *rootEntity = new Qt3DCore::QEntity();
     // Montaje de la escena
     this->p1 = new Elemento(rootEntity, QUrl(QStringLiteral("qrc:/assets/pieza1.obj")));
+    this->p1->setVel(0.1);
 
     this->p2 = new Elemento(rootEntity, QUrl(QStringLiteral("qrc:/assets/pieza2.obj")));
     this->p2->setPoint(QVector3D(0.65f, 0.0f, 0.1f));
+    this->p2->setVel(0.1);
 
     this->p3 = new Elemento(rootEntity, QUrl(QStringLiteral("qrc:/assets/pieza3.obj")));
     this->p3->setPoint(QVector3D(0.65f, 0.0f, 0.1f));
+    this->p3->setVel(0.1);
 
     this->p4 = new Elemento(rootEntity, QUrl(QStringLiteral("qrc:/assets/pieza4.obj")));
     this->p4->setPoint(QVector3D(0.65f, 0.0f, 0.1f));
+    this->p4->setVel(0.1);
 
     this->ef = new Elemento(rootEntity, QUrl(QStringLiteral("qrc:/assets/pieza5.obj")));
     this->ef->setPoint(QVector3D(0.65f, 0.0f, 0.1f));
+    this->ef->setVel(0.1);
 
     return rootEntity;
 }
@@ -64,6 +66,7 @@ void BaseRobot::turnON(){
     // Alarma
     QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
     this->currentAnimation = homing;
+    connect(homing, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
     homing->start();
 }
 
@@ -72,7 +75,6 @@ void BaseRobot::turnOFF(){
 }
 
 void BaseRobot::gdl1Changed(int value){
-
     std::cout << "GDL1: " << value << std::endl;
 
     this->p2->setAxis(QVector3D(0, 1, 0));
@@ -101,7 +103,6 @@ void BaseRobot::gdl2Changed(int value){
 }
 
 void BaseRobot::gdl3Changed(int value){
-
     std::cout << "GDL3: " << value << std::endl;
     // El casteo de las siguientes lineas debe corregirse
     double aux = - PIEZA3_LONG * m_sin(this->p3->getAngle());
@@ -133,7 +134,6 @@ void BaseRobot::externalGdl1(int value){
 
     this->currentAnimation = motion;
     motion->start();
-
 }
 
 void BaseRobot::externalGdl2(int value){
@@ -166,4 +166,8 @@ void BaseRobot::externalV3(double value){
     std::cout << "V3: " << value/10 << std::endl;
     this->p4->setVel(value);
     this->ef->setVel(value);
+}
+
+void BaseRobot::endReceiver(){
+    std::cout << "END" << std::endl;
 }

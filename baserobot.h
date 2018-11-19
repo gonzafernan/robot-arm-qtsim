@@ -1,6 +1,8 @@
 #ifndef BASEROBOT_H
 #define BASEROBOT_H
 
+#include <QObject>
+
 #include <QtCore/QObject>
 
 #include <Qt3DCore/QEntity>
@@ -35,7 +37,7 @@
 
 #define PIEZA3_LONG 7.3
 
-class BaseRobot {
+class BaseRobot : public QObject {
 
     public:
         BaseRobot();
@@ -56,6 +58,9 @@ class BaseRobot {
         void externalV1(double value);
         void externalV2(double value);
         void externalV3(double value);
+
+    public slots:
+        void endReceiver();
 
     private:
         Elemento *p1;
