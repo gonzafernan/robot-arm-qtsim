@@ -63,7 +63,7 @@ class BaseRobot {
         Elemento *p4;
         Elemento *ef;
 
-        bool animation_flag;
+
 };
 
 #endif // BASEROBOT_H

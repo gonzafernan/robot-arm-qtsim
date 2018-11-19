@@ -98,19 +98,19 @@ void BaseRobot::gdl2Changed(int value){
 void BaseRobot::gdl3Changed(int value){
 
     std::cout << "GDL3: " << value << std::endl;
-
+    // El casteo de las siguientes lineas debe corregirse
     double aux = - PIEZA3_LONG * m_sin(this->p3->getAngle());
-    double auxX = this->p1->getPoint().x() + 2.0 * m_cos(this->p2->getAngle());
-    double auxY = this->p1->getPoint().y() + PIEZA3_LONG * m_cos(this->p3->getAngle()) + 10.0f - 1.0f;
-    double auxZ = this->p1->getPoint().z() - 0.1 - 2.35 * m_sin(this->p2->getAngle()) - aux * m_sin(this->p2->getAngle());
+    float auxX = static_cast<float>(this->p1->getPoint().x()) + 2.0f * static_cast<float>(m_cos(this->p2->getAngle()));
+    float auxY = static_cast<float>(this->p1->getPoint().y()) + static_cast<float>(PIEZA3_LONG * m_cos(this->p3->getAngle())) + 10.0f - 1.0f;
+    float auxZ = static_cast<float>(this->p1->getPoint().z()) - 0.1f - 2.35f * static_cast<float>(m_sin(this->p2->getAngle()) - aux * m_sin(this->p2->getAngle()));
 
-    this->p4->setAxis(QVector3D(m_sin(this->p2->getAngle()), 0, m_cos(this->p2->getAngle())));
+    this->p4->setAxis(QVector3D(static_cast<float>(m_sin(this->p2->getAngle())), 0, static_cast<float>(m_cos(this->p2->getAngle()))));
     this->p4->setPoint(QVector3D(auxX, auxY, auxZ));
 
     this->p4->setPrevious_angle(this->p4->getAngle());
     this->p4->setAngle(value);
 
-    this->ef->setAxis(QVector3D(m_sin(this->p2->getAngle()), 0, m_cos(this->p2->getAngle())));
+    this->ef->setAxis(QVector3D(static_cast<float>(m_sin(this->p2->getAngle())), 0, static_cast<float>(m_cos(this->p2->getAngle()))));
     this->ef->setPoint(QVector3D(auxX, auxY, auxZ));
 
     this->ef->setPrevious_angle(this->ef->getAngle());

@@ -47,7 +47,6 @@ HEADERS += \
     conjuntointerfaz.h
 
 FORMS += \
-        mainwindow.ui \
     widget.ui \
     modooperacion.ui \
     filemanager.ui \
