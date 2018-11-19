@@ -11,6 +11,7 @@
 #include <QPropertyAnimation>
 
 #include "controller.h"
+#include "m_function.h"
 
 class Elemento : public QObject {
 
@@ -36,6 +37,11 @@ class Elemento : public QObject {
 
         float getCurrentAngle();
 
+        double getVel();
+        void setVel(double value);
+
+        int getDuration();
+
         Controller *controller;
 
     private:
@@ -51,6 +57,10 @@ class Elemento : public QObject {
 
         int angle = 0;
         int previous_angle = 0;
+
+        // Atributos asociados a la animación
+        double vel = 0;
+        int duration = 0;
 };
 
 #endif // SCENEMODIFIER_H

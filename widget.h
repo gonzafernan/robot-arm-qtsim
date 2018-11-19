@@ -29,9 +29,6 @@ public slots:
     void on_DESACTIVAR_clicked();
 
 private slots:
-    void on_gdl1_valueChanged(int value);
-    void on_gdl2_valueChanged(int value);
-    void on_gdl3_valueChanged(int value);
 
     void on_selectMode_clicked();
 

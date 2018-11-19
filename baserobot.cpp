@@ -38,14 +38,14 @@ void BaseRobot::turnON(){
     //QObject::connect(homing, SIGNAL(finished()), this, SLOT(animationFlag()));
     gdl1Changed(90);
 
-    homing->addAnimation(this->p2->animate(this->p2->getPrevious_angle(), this->p2->getAngle(), 3000));
-    homing->addAnimation(this->p3->animate(this->p3->getPrevious_angle(), this->p3->getAngle(), 3000));
-    homing->addAnimation(this->p4->animate(this->p4->getPrevious_angle(), this->p4->getAngle(), 3000));
-    homing->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), 3000));
+    homing->addAnimation(this->p2->animate(this->p2->getPrevious_angle(), this->p2->getAngle(), this->p2->getDuration()));
+    homing->addAnimation(this->p3->animate(this->p3->getPrevious_angle(), this->p3->getAngle(), this->p3->getDuration()));
+    homing->addAnimation(this->p4->animate(this->p4->getPrevious_angle(), this->p4->getAngle(), this->p4->getDuration()));
+    homing->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), this->ef->getDuration()));
 
     gdl3Changed(90);
-    homing->addAnimation(this->p4->animate(this->p4->getPrevious_angle(), this->p4->getAngle(), 3000));
-    homing->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), 3000));
+    homing->addAnimation(this->p4->animate(this->p4->getPrevious_angle(), this->p4->getAngle(), this->p4->getDuration()));
+    homing->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), this->ef->getDuration()));
     /*
     // ROTACION DEL SEGUNDO GRADO DE LIBERTAD
     float auxX = m_sin(this->p2->controller->angle());
@@ -143,4 +143,20 @@ void BaseRobot::externalGdl3(int value){
     motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(), this->ef->getAngle(), 3000));
 
     motion->start();
+}
+
+void BaseRobot::externalV1(double value){
+    std::cout << "V1: " << value << std::endl;
+    this->p2->setVel(value);
+}
+
+void BaseRobot::externalV2(double value){
+    std::cout << "V2: " << value << std::endl;
+    this->p3->setVel(value);
+}
+
+void BaseRobot::externalV3(double value){
+    std::cout << "V3: " << value << std::endl;
+    this->p4->setVel(value);
+    this->ef->setVel(value);
 }

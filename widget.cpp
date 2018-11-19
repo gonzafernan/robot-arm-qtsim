@@ -24,18 +24,6 @@ void Widget::on_DESACTIVAR_clicked(){
     this->estado=false;
 }
 
-void Widget::on_gdl1_valueChanged(int value){
-    this->br->externalGdl1(value);
-}
-
-void Widget::on_gdl2_valueChanged(int value){
-    this->br->externalGdl2(value);
-}
-
-void Widget::on_gdl3_valueChanged(int value){
-    this->br->externalGdl3(value);
-}
-
 void Widget::on_selectMode_clicked(){
     ModoOperacion *mode = new ModoOperacion();
     mode->setData(this->br);

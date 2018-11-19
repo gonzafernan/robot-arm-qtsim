@@ -52,6 +52,9 @@ class BaseRobot {
         void externalGdl2(int value);
         void externalGdl3(int value);
 
+        void externalV1(double value);
+        void externalV2(double value);
+        void externalV3(double value);
 
     private:
         Elemento *p1;

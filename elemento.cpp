@@ -25,7 +25,6 @@ Elemento::Elemento(Qt3DCore::QEntity *rootEntity, QUrl url)
     this->animation->setTargetObject(this->controller);
 
     update(m_rootEntity);
-
 }
 
 Elemento::~Elemento(){
@@ -73,6 +72,11 @@ int Elemento::getPrevious_angle(){
 
 void Elemento::setAngle(int value){
     this->angle = value;
+    if (this->vel > 0){
+        this->duration = static_cast<int>((this->angle - this->previous_angle)*1000*(M_PI/180)/this->vel);
+    } else {
+        this->duration = 0;
+    }
 }
 
 void Elemento::setPrevious_angle(int value){
@@ -81,4 +85,16 @@ void Elemento::setPrevious_angle(int value){
 
 float Elemento::getCurrentAngle(){
     return this->controller->angle();
+}
+
+double Elemento::getVel(){
+    return this->vel;
+}
+
+void Elemento::setVel(double value){
+    this->vel = value;
+}
+
+int Elemento::getDuration(){
+    return this->duration;
 }

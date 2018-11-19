@@ -94,7 +94,7 @@
     <string>Ingrese Archivo</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="homing">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -169,7 +169,10 @@
      <string>Velocidad de Base 1:</string>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_4">
+   <widget class="QSlider" name="v1">
+    <property name="singleStep">
+     <number>1</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -179,7 +182,7 @@
      <string>Velocidad de Base 2:</string>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_5">
+   <widget class="QSlider" name="v2">
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -189,7 +192,7 @@
      <string>Velocidad de Brazo:</string>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_6">
+   <widget class="QSlider" name="v3">
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -212,7 +215,10 @@
      <string>Rotación de Base 1:</string>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider">
+   <widget class="QSlider" name="gdl1">
+    <property name="maximum">
+     <number>359</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -222,7 +228,10 @@
      <string>Rotación de Base 2:</string>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_2">
+   <widget class="QSlider" name="gdl2">
+    <property name="maximum">
+     <number>359</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -232,7 +241,10 @@
      <string>Rotación de Brazo:</string>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_3">
+   <widget class="QSlider" name="gdl3">
+    <property name="maximum">
+     <number>359</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
