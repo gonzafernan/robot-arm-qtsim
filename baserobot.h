@@ -31,6 +31,7 @@
 #include <QSound>
 
 #include <iostream>
+#include <fstream>
 
 #include "m_function.h"
 #include "elemento.h"
@@ -43,6 +44,9 @@ class BaseRobot : public QObject {
         BaseRobot();
         ~BaseRobot();
         Qt3DCore::QEntity *init();
+
+        void loadProgram(const QString &msg);
+        void interpreteComando(std::string comando);
 
         void turnON();
         void turnOFF();
@@ -63,6 +67,9 @@ class BaseRobot : public QObject {
         void endReceiver();
 
     private:
+        const std::string ip_adress = "192.168.1.143/24";
+        const unsigned int PORT = 8003;
+
         Elemento *p1;
         Elemento *p2;
         Elemento *p3;

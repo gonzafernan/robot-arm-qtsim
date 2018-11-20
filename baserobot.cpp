@@ -34,6 +34,61 @@ Qt3DCore::QEntity *BaseRobot::init(){
     return rootEntity;
 }
 
+void BaseRobot::loadProgram(const QString &msg){
+    std::ifstream file;
+    file.open(msg.toStdString());
+    std::cout << "Loading program..." << std::endl;
+    std::string comando;
+    if (file.is_open()){
+        while (std::getline(file, comando)){
+            std::cout << comando << std::endl;
+            this->interpreteComando(comando);
+        }
+        file.close();
+    } else {
+        std::cout << "PROBLEM OPENING FILE" << std::endl;
+    }
+}
+
+/* ----------------------------------------------------------------------------------------
+ *  INTERPRETE DE COMANDO
+ *      Las instrucciones disponibles son:
+ *      - Consigna de posición: G0AXPY
+ *  Donde X es el número de articulación a modificar e Y el ángulo deseado.
+ *      - Consigna de velocidad: G1AXVY
+ *  Donde X es el número de articulación a modificar e Y la velocidad deseada.
+ *      - Homing: G28
+ -----------------------------------------------------------------------------------------*/
+void BaseRobot::interpreteComando(std::string comando){
+    std::cout << comando << std::endl;
+    if (comando[1] == '0'){ // Consigna de ángulo
+        std::string aux = comando.substr(5, 4);
+        char aux1[4];
+        strcpy(aux1, aux.c_str());
+        if (comando[3] == '1'){
+            this->externalGdl1(atoi(aux1));
+        } else if (comando[3] == '2'){
+            this->externalGdl2(atoi(aux1));
+        } else if (comando[3] == '3'){
+            this->externalGdl3(atoi(aux1));
+        }
+    } else if (comando[1] == '1'){ // Consigna de velocidad
+        std::string aux = comando.substr(5, 4);
+        char aux1[4];
+        strcpy(aux1, aux.c_str());
+        if (comando[3] == '1'){
+            this->externalV1(atof(aux1));
+        } else if (comando[3] == '2'){
+            this->externalV2(atof(aux1));
+        } else if (comando[3] == '3'){
+            this->externalV3(atof(aux1));
+        }
+    } else if (comando[1] == '2' && comando[2] == '8'){ // Comando homing
+        std::cout << "HOMING" << std::endl;
+        this->turnON();
+    }
+}
+
 void BaseRobot::turnON(){
     std::cout << "ON" << std::endl;
     this->estado = ACTIVE;

@@ -40,7 +40,8 @@ void FileManager::on_AceptarF_clicked(){
         QMessageBox::information(nullptr, "error", file.errorString());
     }
     QTextStream in(&file);
-    this->Comandos = in.readAll();
+    this->program = in.readAll();
+    this->br->loadProgram(this->Direcc);
     this->hide();
 }
 

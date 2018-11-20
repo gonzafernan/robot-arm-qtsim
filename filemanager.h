@@ -29,7 +29,7 @@ class FileManager : public QMainWindow, public ConjuntoInterfaz {
 
     private:
         Ui::FileManager *ui;
-        QString Comandos;
+        QString program;
         QString Direcc;
 
 };
