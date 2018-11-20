@@ -64,6 +64,8 @@ class BaseRobot : public QObject {
         void externalV2(double value);
         void externalV3(double value);
 
+        QString toQString();
+
     public slots:
         void endReceiver();
 

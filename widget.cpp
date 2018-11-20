@@ -7,6 +7,11 @@ Widget::Widget(QWidget *parent) :
     estado = false;
     ui->setupUi(this);
     setWindowTitle("Programación Orientada a Objetos");
+
+    // Reporte de estado de la máquina
+    timer = new QTimer(this);
+    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(report()));
+    timer->start(1000);
 }
 
 Widget::~Widget(){
@@ -48,4 +53,8 @@ void Widget::on_Data_clicked(){
     data->setData(this->br);
     data->show();
     std::cout << "List data" << std::endl;
+}
+
+void Widget::report(){
+    ui->report->setPlainText(this->br->toQString());
 }

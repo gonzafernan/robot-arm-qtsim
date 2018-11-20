@@ -2,7 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include <QSlider>
+#include <QTimer>
 #include <iostream>
 
 #include "ui_widget.h"
@@ -27,6 +27,7 @@ public:
 public slots:
     void on_ACTIVAR_clicked();
     void on_DESACTIVAR_clicked();
+    void report();
 
 private slots:
 
@@ -41,6 +42,8 @@ private slots:
 private:
     Ui::Widget *ui;
     bool estado;
+
+    QTimer *timer;
 };
 
 #endif // WIDGET_H

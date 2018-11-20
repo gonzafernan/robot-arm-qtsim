@@ -273,3 +273,18 @@ void BaseRobot::endReceiver(){
     }
     std::cout << "END" << std::endl;
 }
+
+QString BaseRobot::toQString(){
+    QString data;
+    data += ("Ángulo de cada pieza:\n");
+    data += ("'Angulo pieza 2: " + QString::number(RadtoDegree(this->p2->getCurrentAngle())) + "\n");
+    data += ("'Angulo pieza 3: " + QString::number(RadtoDegree(this->p3->getCurrentAngle())) + "\n");
+    data += ("'Angulo pieza 4 y efector final: " + QString::number(RadtoDegree(this->p4->getCurrentAngle())) + "\n");
+    data += ("Velocidad relativa de cada articulación:\n");
+    data += ("Velocidad art.1: " + QString::number(this->p2->getVel()) + "\n");
+    data += ("Velocidad art.2: " + QString::number(this->p3->getVel()) + "\n");
+    data += ("Velocidad art.3: " + QString::number(this->p4->getVel()) + "\n");
+    data += ("Velocidad de trabajo efector final: " + QString::number(this->ef->getVel()) + "\n");
+
+    return data;
+}

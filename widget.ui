@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>358</width>
-    <height>266</height>
+    <height>438</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -99,6 +99,9 @@
       <string>SALIR</string>
      </property>
     </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="report"/>
    </item>
   </layout>
  </widget>
