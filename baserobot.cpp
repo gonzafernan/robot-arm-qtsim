@@ -58,34 +58,68 @@ void BaseRobot::loadProgram(const QString &msg){
  *      - Consigna de velocidad: G1AXVY
  *  Donde X es el número de articulación a modificar e Y la velocidad deseada.
  *      - Homing: G28
+ *      - Turn OFF: M0
+ *      - Consigna tarea del efector final: TX
+ * Donde X es:
+ *  - 0: PINTAR
+ *  - 1: SOSTENER
+ *  - 2: SOLTAR
+ *  - 3: ROTAR
+ *      - Consigna de duración de tarea del efector final: DXX
+ * Donde XX es el valor en segundos.
+ *      - Inicio de operación del efector final: EF
  -----------------------------------------------------------------------------------------*/
 void BaseRobot::interpreteComando(std::string comando){
     std::cout << comando << std::endl;
-    if (comando[1] == '0'){ // Consigna de ángulo
-        std::string aux = comando.substr(5, 4);
-        char aux1[4];
-        strcpy(aux1, aux.c_str());
-        if (comando[3] == '1'){
-            this->externalGdl1(atoi(aux1));
-        } else if (comando[3] == '2'){
-            this->externalGdl2(atoi(aux1));
-        } else if (comando[3] == '3'){
-            this->externalGdl3(atoi(aux1));
+    if (comando[0] == 'G'){
+        if (comando[1] == '0'){ // Consigna de ángulo
+            std::string aux = comando.substr(5, 4);
+            char aux1[4];
+            strcpy(aux1, aux.c_str());
+            if (comando[3] == '1'){
+                this->externalGdl1(atoi(aux1));
+            } else if (comando[3] == '2'){
+                this->externalGdl2(atoi(aux1));
+            } else if (comando[3] == '3'){
+                this->externalGdl3(atoi(aux1));
+            }
+        } else if (comando[1] == '1'){ // Consigna de velocidad
+            std::string aux = comando.substr(5, 4);
+            char aux1[4];
+            strcpy(aux1, aux.c_str());
+            if (comando[3] == '1'){
+                this->externalV1(atof(aux1));
+            } else if (comando[3] == '2'){
+                this->externalV2(atof(aux1));
+            } else if (comando[3] == '3'){
+                this->externalV3(atof(aux1));
+            }
+        } else if (comando[1] == '2' && comando[2] == '8'){ // Comando homing
+            std::cout << "HOMING" << std::endl;
+            this->turnON();
         }
-    } else if (comando[1] == '1'){ // Consigna de velocidad
-        std::string aux = comando.substr(5, 4);
-        char aux1[4];
-        strcpy(aux1, aux.c_str());
-        if (comando[3] == '1'){
-            this->externalV1(atof(aux1));
-        } else if (comando[3] == '2'){
-            this->externalV2(atof(aux1));
-        } else if (comando[3] == '3'){
-            this->externalV3(atof(aux1));
+    } else if (comando[0] == 'M'){
+        if (comando[1] == '0'){
+            this->turnOFF();
         }
-    } else if (comando[1] == '2' && comando[2] == '8'){ // Comando homing
-        std::cout << "HOMING" << std::endl;
-        this->turnON();
+    } else if (comando[0] == 'T'){
+        if (comando[1] == '0'){
+            this->ef->setTarea(PINTAR);
+        } else if (comando[1] == '1'){
+            this->ef->setTarea(SOSTENER);
+        } else if (comando [1] == '2'){
+            this->ef->setTarea(SOLTAR);
+        } else if (comando[1] == '3'){
+            this->ef->setTarea(ROTAR);
+        }
+    } else if (comando[0] == 'D'){
+        std::string aux = comando.substr(1, 2);
+        char aux1[2];
+        strcpy(aux1, aux.c_str());
+        this->ef->setDuration(atoi(aux1));
+    } else if (comando[0] == 'E' && comando[1] == 'F'){
+        this->ef->work();
+        std::cout << "END" << std::endl;
     }
 }
 
@@ -129,10 +163,10 @@ void BaseRobot::turnON(){
 }
 
 void BaseRobot::turnOFF(){
+    this->estado = INACTIVE;
     if (this->currentAnimation != nullptr){
         this->currentAnimation->stop();
     }
-    this->estado = INACTIVE;
 }
 
 void BaseRobot::gdl1Changed(int value){
@@ -234,6 +268,8 @@ void BaseRobot::externalV3(double value){
 }
 
 void BaseRobot::endReceiver(){
+    if (this->estado == RUNNING){
+        this->estado = ACTIVE;
+    }
     std::cout << "END" << std::endl;
-    this->estado = ACTIVE;
 }

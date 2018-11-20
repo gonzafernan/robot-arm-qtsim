@@ -35,6 +35,7 @@
 
 #include "m_function.h"
 #include "elemento.h"
+#include "efectorfinal.h"
 
 #define PIEZA3_LONG 7.3
 
@@ -74,7 +75,7 @@ class BaseRobot : public QObject {
         Elemento *p2;
         Elemento *p3;
         Elemento *p4;
-        Elemento *ef;
+        EfectorFinal *ef;
 
         QParallelAnimationGroup *currentAnimation = nullptr;
 
