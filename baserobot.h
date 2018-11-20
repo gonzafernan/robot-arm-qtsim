@@ -74,7 +74,7 @@ class BaseRobot : public QObject {
 
     private:
         const std::string ip_adress = "192.168.1.143/24";
-        const unsigned int PORT = 8003;
+        const uint16_t PORT = 8003;
 
         Elemento *p1;
         Elemento *p2;

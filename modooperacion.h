@@ -18,7 +18,7 @@ class ModoOperacion : public QWidget, public ConjuntoInterfaz {
         explicit ModoOperacion(QWidget *parent = nullptr);
         ~ModoOperacion();
 
-    void setLastProgram(QString direc);
+        void setLastProgram(QString direc);
 
     public slots:
         void on_Archivo_clicked();
