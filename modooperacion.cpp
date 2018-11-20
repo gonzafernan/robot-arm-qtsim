@@ -48,3 +48,12 @@ void ModoOperacion::on_v2_valueChanged(int value){
 void ModoOperacion::on_v3_valueChanged(int value){
     this->br->externalV3(static_cast<double>(value/10));
 }
+
+
+void ModoOperacion::on_execute_clicked(){
+    QString comando;
+    comando = ui->textEdit->toPlainText();
+    //ui->textEdit->setPlainText(comando);
+    ui->textEdit->clear();
+    this->br->interpreteComando(comando.toStdString());
+}

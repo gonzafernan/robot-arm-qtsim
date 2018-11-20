@@ -37,6 +37,8 @@ private slots:
 
         void on_v3_valueChanged(int value);
 
+        void on_execute_clicked();
+
 private:
         Ui::ModoOperacion *ui;
 };
