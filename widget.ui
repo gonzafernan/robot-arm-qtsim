@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>358</width>
-    <height>438</height>
+    <height>635</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -94,14 +94,24 @@
     </widget>
    </item>
    <item>
+    <widget class="QTextEdit" name="report"/>
+   </item>
+   <item>
+    <widget class="QPushButton" name="askEstado">
+     <property name="text">
+      <string>CONSULTAR ESTADO</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="estadoInfo"/>
+   </item>
+   <item>
     <widget class="QPushButton" name="EXIT">
      <property name="text">
       <string>SALIR</string>
      </property>
     </widget>
-   </item>
-   <item>
-    <widget class="QTextEdit" name="report"/>
    </item>
   </layout>
  </widget>

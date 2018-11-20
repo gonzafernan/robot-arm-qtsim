@@ -288,3 +288,31 @@ QString BaseRobot::toQString(){
 
     return data;
 }
+
+QString BaseRobot::getEstado(){
+    QString estado;
+    switch (this->estado) {
+        case INACTIVE:
+            estado = "INACTIVO";
+            break;
+        case ACTIVE:
+            estado = "ACTIVO";
+            break;
+        case RUNNING:
+            estado = "EN MOVIMIENTO";
+            break;
+    }
+    return estado;
+}
+
+QString BaseRobot::get_efTarea(){
+    QString data;
+    data = this->ef->getTarea();
+    return data;
+}
+
+QString BaseRobot::get_efDuracion(){
+    QString data;
+    data = QString::number(this->ef->getDuracion());
+    return data;
+}

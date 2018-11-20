@@ -20,3 +20,26 @@ void EfectorFinal::setTarea(enum tarea tarea){
 void EfectorFinal::setDuration(int value){
     this->duration = value;
 }
+
+QString EfectorFinal::getTarea(){
+    QString tarea;
+    switch (this->tarea) {
+        case PINTAR:
+            tarea = "PINTAR";
+            break;
+        case SOSTENER:
+            tarea = "SOSTENER";
+            break;
+        case SOLTAR:
+            tarea = "SOLTAR";
+            break;
+        case ROTAR:
+            tarea = "ROTAR";
+            break;
+    }
+    return tarea;
+}
+
+int EfectorFinal::getDuracion(){
+    return this->duration;
+}

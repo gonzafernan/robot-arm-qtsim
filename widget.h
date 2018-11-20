@@ -39,6 +39,8 @@ private slots:
 
     void on_Data_clicked();
 
+    void on_askEstado_clicked();
+
 private:
     Ui::Widget *ui;
     bool estado;

@@ -58,3 +58,12 @@ void Widget::on_Data_clicked(){
 void Widget::report(){
     ui->report->setPlainText(this->br->toQString());
 }
+
+void Widget::on_askEstado_clicked(){
+    QString data;
+    QString estado;
+    data += ("Estado del robot: " + this->br->getEstado() + "\n");
+    data += ("Tarea configurada en efector final: " + this->br->get_efTarea() + "\n");
+    data += ("Duración: " + this->br->get_efDuracion() + "\n");
+    this->ui->estadoInfo->setPlainText(data);
+}

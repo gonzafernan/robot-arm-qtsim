@@ -15,7 +15,10 @@ class EfectorFinal : public Elemento {
         virtual ~EfectorFinal();
 
         void work();
+
+        QString getTarea();
         void setTarea(enum tarea tarea);
+        int getDuracion();
         void setDuration(int value);
 
     private:

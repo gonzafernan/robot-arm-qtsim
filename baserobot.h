@@ -65,6 +65,9 @@ class BaseRobot : public QObject {
         void externalV3(double value);
 
         QString toQString();
+        QString getEstado();
+        QString get_efTarea();
+        QString get_efDuracion();
 
     public slots:
         void endReceiver();
