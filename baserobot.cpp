@@ -129,7 +129,9 @@ void BaseRobot::turnON(){
 }
 
 void BaseRobot::turnOFF(){
-    this->currentAnimation->stop();
+    if (this->currentAnimation != nullptr){
+        this->currentAnimation->stop();
+    }
     this->estado = INACTIVE;
 }
 
