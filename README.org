@@ -57,5 +57,58 @@ utilizando la librería /Qt3DCore/.
 ** Controles de cámara en la interfaz
 Los controles configurados para la interfaz fueron tipo /Orbit
 Controllers/, donde se hace zoom con el scroll del mouse, se traslada
-con el click izquierdo y se rota con el click derecho.
+con el click izquierdo y se rota con el click derecho.\\
 [[./vids/3Dwindow.gif]]
+** Panel de control
+*** Ventana principal
+El panel de control consiste en una ventana principal (clase
+/Widget/), con botones que permiten el encendido y apagado del
+robot.
+El encendido procede automáticamente con un secuencia de movimientos
+de homing. La acción de apagado frenará el robot en la posición en que
+esté, dandole un estado inactivo.\\
+Esta ventana principal también posee un cuadro de texto indicador del
+estado global del robot (encendido o apagado) y otros dos cuadros de
+texto que proveen la información del ángulo en que se encuentra cada
+articulación, su velocidad relativa, e información de la
+configuración del efector final.\\
+Los botones "Establecer características iniciales", "Cargar archivo de
+comandos" y "Comenzar movimiento" abren las otras respectivas
+ventanas.\\
+En el inferior de la ventana se encuentra el botón salir para cerrar
+ésta.
+
+*** Características
+Desde la ventana principal, si se presiona el botón "Establecer
+características iniciales", se abre la ventana de "Características".\\
+En esta ventana el usuario puede introducir los parámetros que desee
+del robot: Ángulos de las articulaciones y sus respectivas
+velocidades. Una vez introducidos estos parámetros,  cuando el usuario
+presione "Aceptar" estos datos serán cargados y si son diferentes a
+los previos el robot procederá a ejecutar los movimientos
+correspondientes.
+
+*** Operación
+Si desde la ventana principal el usuario presiona la ventana
+principal, se abre la ventana de operación. Básicamente desde esta
+ventana el usuario tiene completo control sobre el robot, y puede
+moverlo ya sea introduciendo linea a linea comandos GCode en el cuadro
+de texto correspondiente o controlando ángulo y velocidad de cada
+articulación a través de los correspondientes sliders de la ventana.\\
+En el inferior de la ventana se encuentra un botón para cargar un
+archivo de comandos GCode y otro para realizar homing del robot.\\
+El botón "Terminar" cierra la ventana.
+
+*** Carga de archivo de comandos
+Si desde la ventana principal o desde la ventana de operación, el
+usuario presiona el botón para cargar archivo de comandos, se abrirá
+una ventana con dos cuadros de texto y una pestaña superior.\\
+La pestaña superior "File" puede presionarse, y se abrirá el gestor de
+archivos correspondiente para que el usuario cargué su archivo de
+texto con el programa de instrucciones GCode que desee ejecutar. Una
+vez seleccionado, en un cuadro de texto de la ventana se pude observar
+una vista preliminar del archivo y en el otro la ruta de éste.\\
+En la parte inferior de la ventana se encuentran dos botones,
+"Aceptar" y "Cancelar". El botón Aceptar cargará el programa
+seleccionado y lo ejecutará, El botón Cancelar cerrará la ventana sin
+que ninguna acción suceda.
