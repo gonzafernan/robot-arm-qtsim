@@ -26,9 +26,13 @@ class Elemento : public QObject {
         // Duración en milisegundos!
 
         void setAxis(QVector3D naxis);
+        void setAxis(int n, QVector3D naxis);
         QVector3D getAxis();
+        QVector3D getAxis(int n);
         void setPoint(QVector3D npoint);
+        void setPoint(int n, QVector3D npoint);
         QVector3D getPoint();
+        QVector3D getPoint(int n);
 
         int getAngle(int n);
         int getPrevious_angle(int n);

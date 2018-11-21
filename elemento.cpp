@@ -50,16 +50,32 @@ void Elemento::setAxis(QVector3D naxis){
     this->controller->setAxis(naxis);
 }
 
+void Elemento::setAxis(int n, QVector3D naxis){
+    this->controller->setAxis(n, naxis);
+}
+
 void Elemento::setPoint(QVector3D npoint){
     this->controller->setPoint(npoint);
+}
+
+void Elemento::setPoint(int n, QVector3D npoint){
+    this->controller->setPoint(n, npoint);
 }
 
 QVector3D Elemento::getAxis(){
     return this->controller->getAxis();
 }
 
+QVector3D Elemento::getAxis(int n){
+    return this->controller->getAxis(n);
+}
+
 QVector3D Elemento::getPoint(){
     return this->controller->getPoint();
+}
+
+QVector3D Elemento::getPoint(int n){
+    return this->controller->getPoint(n);
 }
 
 int Elemento::getAngle(int n){

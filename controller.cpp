@@ -45,13 +45,49 @@ float Controller::angle() const {
     return m_angle;
 }
 
+float Controller::angle(int n){
+    return this->previousAngle[n];
+}
+
 void Controller::updateMatrix(){
     m_matrix.setToIdentity();
+    /*
+    // Trasl gdl1
+    m_matrix.translate(this->previousPoint[0].x(), this->previousPoint[0].y() - 10.0f, this->previousPoint[0].z());
+    // Rot. gdl1
+    m_matrix.rotate(this->previousAngle[0], this->previousAxis[0]);
+
+    // Trasl. gdl2
+    m_matrix.translate(this->previousPoint[1].x(), this->previousPoint[1].y() - 10.0f, this->previousPoint[1].z());
+    // Rot. gdl2
+    m_matrix.rotate(this->previousAngle[1], this->previousAxis[1]);
+
+    // Trasl. gdl3
+    m_matrix.translate(this->previousPoint[2].x(), this->previousPoint[2].y() - 10.0f, this->previousPoint[2].z());
+    // Rot. gdl3
+    m_matrix.rotate(this->previousAngle[2], this->previousAxis[2]);
+    */
+    //---------------------------------------------------------------
     m_matrix.translate(this->point.x(), this->point.y() - 10.0f, this->point.z());
-    //m_matrix.translate(this->point);
     m_matrix.rotate(m_angle, this->axis);
     m_matrix.translate(-this->point.x(), -this->point.y(), -this->point.z());
-    //m_matrix.translate(-this->point);
+    //---------------------------------------------------------------
+    /*
+    // Rot. inv. gdl3
+    m_matrix.rotate(-this->previousAngle[2], this->previousAxis[2]);
+    // Trasl inv. gdl3
+    m_matrix.translate(-this->previousPoint[2]);
+
+    // Rot. inv. gdl2
+    m_matrix.rotate(-this->previousAngle[1], this->previousAxis[1]);
+    // Trasl inv. gdl2
+    m_matrix.translate(-this->previousPoint[1]);
+
+    // Rot. inv. gdl1
+    m_matrix.rotate(-this->previousAngle[0], this->previousAxis[0]);
+    // Trasl inv gdl1
+    m_matrix.translate(-this->previousPoint[0]);
+    */
     m_target->setMatrix(m_matrix);
 }
 
@@ -77,8 +113,16 @@ QVector3D Controller::getAxis(){
     return this->axis;
 }
 
+QVector3D Controller::getAxis(int n){
+    return this->previousAxis[n];
+}
+
 QVector3D Controller::getPoint(){
     return this->point;
+}
+
+QVector3D Controller::getPoint(int n){
+    return this->previousPoint[n];
 }
 
 QT_END_NAMESPACE
