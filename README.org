@@ -1,28 +1,38 @@
 #+TITLE: Trabajo Práctico Integrador: C++ Avanzado
 #+AUTHOR: Claribel Manzano; Gonzalo Fernández
 
-* Introducción
 El presente trabajo se responde a lo solicitado como trabajo práctico
 integrador de la cátedra de *Programación Orientada a Objetos* de la
 /Facultad de Ingeniería/ de la /Universidad Nacional de Cuyo/,
 Mendoza, Argentina. Año 2018.
 * Objetivos
-El objetivo del trabajo consiste en controlar un robot, cuya
-descripción se encuentra más adelante,  de 3 grados de libertad con
-efector final.
+El objetivo del trabajo consiste en controlar un robot de 3 grados de libertad con
+efector final, a modo de simulación.
 * Requerimientos generales
 Dado que la cátedra es de programación orientada a objetos, la
-resolución del problema planteado debe estar representado e
-implementado usando un *paradigma orientado a objetos*.
-Debe diseñarse usando *modelo de capas*, de manera que la solución
-pueda usarse independientemente de que haya interfaz gráfica o de
+resolución del problema planteado está representada e
+implementada usando un *paradigma orientado a objetos*.\\
+Está diseñado utilizando un *modelo de capas*, de manera que la solución
+puede usarse independientemente de que haya interfaz gráfica o de
 consola.
 Debido a que el lenguaje de programación aprendido y utilizado durante
 el cursado de la cátedra es *C++*, lenguaje que cumple los
-requerimientos que ha de tener la solución del problema siendo uno de
-los más indicados en problemas de éste tipo, se lo adopta como
+requerimientos que tiene la solución del problema siendo uno de
+los más indicados en problemas de éste tipo, se lo adoptó como
 lenguaje principal del proyecto.
 Todo el proyecto es desarrollado bajo *sistema operativo Linux*.
-Para la implementación de la interfaz de usuario, se requiere que sea
+Para la implementación de la interfaz de usuario, es requerido que sea
 gráfica, con interacción estándar mediante mouse y teclado. En este
 caso se utiliza las *librerías del framework Qt5*.
+
+* Robot simulado
+El robot que se simula es un *modelo RRR*, lo que quiere decir que sus
+tres grados de libertad corresponden a rotaciones. El tipo propuesto
+es uno similar al modelo *Mitsubishi RV-2AJ*. 
+
+** Modelo 3D del robot
+La solución propuesta para la vista del robot en la interfaz, es que
+ésta sea 3D.\\
+Buscando en la web, se encontró en la página [[https://grabcad.com/library][GrabCad Community]] un gran
+aporte de [[https://grabcad.com/filipe.barbosa-3][Filipe Barbosa]] de un robot [[https://grabcad.com/library/mitsubishi-rv-6s-1][Mitsubishi Industrial MELFA
+Series]] que responde al modelo RRR.
