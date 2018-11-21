@@ -1,0 +1,28 @@
+#+TITLE: Trabajo Práctico Integrador: C++ Avanzado
+#+AUTHOR: Claribel Manzano; Gonzalo Fernández
+
+* Introducción
+El presente trabajo se responde a lo solicitado como trabajo práctico
+integrador de la cátedra de *Programación Orientada a Objetos* de la
+/Facultad de Ingeniería/ de la /Universidad Nacional de Cuyo/,
+Mendoza, Argentina. Año 2018.
+* Objetivos
+El objetivo del trabajo consiste en controlar un robot, cuya
+descripción se encuentra más adelante,  de 3 grados de libertad con
+efector final.
+* Requerimientos generales
+Dado que la cátedra es de programación orientada a objetos, la
+resolución del problema planteado debe estar representado e
+implementado usando un *paradigma orientado a objetos*.
+Debe diseñarse usando *modelo de capas*, de manera que la solución
+pueda usarse independientemente de que haya interfaz gráfica o de
+consola.
+Debido a que el lenguaje de programación aprendido y utilizado durante
+el cursado de la cátedra es *C++*, lenguaje que cumple los
+requerimientos que ha de tener la solución del problema siendo uno de
+los más indicados en problemas de éste tipo, se lo adopta como
+lenguaje principal del proyecto.
+Todo el proyecto es desarrollado bajo *sistema operativo Linux*.
+Para la implementación de la interfaz de usuario, se requiere que sea
+gráfica, con interacción estándar mediante mouse y teclado. En este
+caso se utiliza las *librerías del framework Qt5*.
