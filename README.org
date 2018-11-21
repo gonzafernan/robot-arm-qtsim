@@ -58,4 +58,4 @@ utilizando la librería /Qt3DCore/.
 Los controles configurados para la interfaz fueron tipo /Orbit
 Controllers/, donde se hace zoom con el scroll del mouse, se traslada
 con el click izquierdo y se rota con el click derecho.
-[[.vids/3Dwindow.gif]]
+[[./vids/3Dwindow.gif]]
