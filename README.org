@@ -40,3 +40,22 @@ Series]] que responde al modelo RRR.
 #+CAPTION: Render de modelo de robot Mitsubishi Industrial MELFA Series
 #+NAME:   fig:RV-6S
 [[./imgs/RV-6S.jpg]]
+
+** Incorporación del modelo al proyecto
+El modelo se encontraba en formato con extensión /.stp/. Para poder
+utilizarlo correctamente en el framework Qt5, se convirtió el modelo a
+formato /.obj/. El proceso de conversión fue de /.stp/ a un ensamble
+de piezas en formato /.stl/, y con ayuda del software libre /Blender/,
+se exportó este ensamble en una versión simplificada de 5 piezas en
+formato /.obj/, que se encuentran en la carpeta [[./assets/][assets]].
+
+* Interfaz gráfica de usuario
+Como ya se mencionó anteriormente, la interfaz gráfica de usuario se
+diseña utilizando librerías proveídas por Qt, en este caso las
+principales utilizadas son /QWidget/ y /QMainWindow/, y la ventana 3D
+utilizando la librería /Qt3DCore/.
+** Controles de cámara en la interfaz
+Los controles configurados para la interfaz fueron tipo /Orbit
+Controllers/, donde se hace zoom con el scroll del mouse, se traslada
+con el click izquierdo y se rota con el click derecho.
+[[.vids/3Dwindow.gif]]
