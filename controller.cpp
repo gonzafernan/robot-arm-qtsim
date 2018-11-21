@@ -5,7 +5,6 @@ QT_BEGIN_NAMESPACE
 Controller::Controller() : QObject() {
 }
 
-
 Controller::Controller(QObject *parent) : QObject(parent)
   , m_target(nullptr)
   , m_matrix()

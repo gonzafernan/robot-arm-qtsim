@@ -33,7 +33,6 @@ class Elemento : public QObject {
         int getAngle();
         int getPrevious_angle();
         void setAngle(int value);
-        void setPrevious_angle(int value);
 
         float getCurrentAngle();
 

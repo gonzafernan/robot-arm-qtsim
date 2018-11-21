@@ -71,16 +71,13 @@ int Elemento::getPrevious_angle(){
 }
 
 void Elemento::setAngle(int value){
+    this->previous_angle = this->angle;
     this->angle = value;
     if (this->vel > 0){
         this->duration = static_cast<int>((this->angle - this->previous_angle)*1000*(M_PI/180)/this->vel);
     } else {
         this->duration = static_cast<int>(INFINITY);
     }
-}
-
-void Elemento::setPrevious_angle(int value){
-    this->previous_angle = value;
 }
 
 float Elemento::getCurrentAngle(){

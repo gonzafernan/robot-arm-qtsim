@@ -182,11 +182,6 @@ void BaseRobot::gdl1Changed(int value){
     this->p4->setPoint(QVector3D(0.65f, 0.0f, 0.1f));
     this->ef->setPoint(QVector3D(0.65f, 0.0f, 0.1f));
 
-    this->p2->setPrevious_angle(this->p1->getAngle());
-    this->p3->setPrevious_angle(this->p1->getAngle());
-    this->p4->setPrevious_angle(this->p1->getAngle());
-    this->ef->setPrevious_angle(this->p1->getAngle());
-
     this->p2->setAngle(value);
     this->p3->setAngle(value);
     this->p4->setAngle(value);
@@ -208,13 +203,11 @@ void BaseRobot::gdl3Changed(int value){
     this->p4->setAxis(QVector3D(static_cast<float>(m_sin(this->p2->getAngle())), 0, static_cast<float>(m_cos(this->p2->getAngle()))));
     this->p4->setPoint(QVector3D(auxX, auxY, auxZ));
 
-    this->p4->setPrevious_angle(this->p4->getAngle());
     this->p4->setAngle(value);
 
     this->ef->setAxis(QVector3D(static_cast<float>(m_sin(this->p2->getAngle())), 0, static_cast<float>(m_cos(this->p2->getAngle()))));
     this->ef->setPoint(QVector3D(auxX, auxY, auxZ));
 
-    this->ef->setPrevious_angle(this->ef->getAngle());
     this->ef->setAngle(value);
 }
 
