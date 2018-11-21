@@ -30,6 +30,10 @@ class Controller : public QObject {
         void setTarget(Qt3DCore::QTransform *target);
         Qt3DCore::QTransform *target() const;
 
+        /*
+         * Sobrecarga de métodos debido a un determinado error,
+         * analizar más adelante el motivo de ésto.
+         */
         void setAngle(float angle);
         void setAngle(int n, float angle);
 

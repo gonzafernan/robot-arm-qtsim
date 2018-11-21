@@ -62,19 +62,19 @@ QVector3D Elemento::getPoint(){
     return this->controller->getPoint();
 }
 
-int Elemento::getAngle(){
-    return this->angle;
+int Elemento::getAngle(int n){
+    return this->angle[n];
 }
 
-int Elemento::getPrevious_angle(){
-    return this->previous_angle;
+int Elemento::getPrevious_angle(int n){
+    return this->previous_angle[n];
 }
 
-void Elemento::setAngle(int value){
-    this->previous_angle = this->angle;
-    this->angle = value;
+void Elemento::setAngle(int n, int value){
+    this->previous_angle[n] = this->angle[n];
+    this->angle[n] = value;
     if (this->vel > 0){
-        this->duration = static_cast<int>((this->angle - this->previous_angle)*1000*(M_PI/180)/this->vel);
+        this->duration = static_cast<int>(std::abs(this->angle - this->previous_angle)*1000*(M_PI/180)/this->vel);
     } else {
         this->duration = static_cast<int>(INFINITY);
     }

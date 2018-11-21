@@ -30,9 +30,9 @@ class Elemento : public QObject {
         void setPoint(QVector3D npoint);
         QVector3D getPoint();
 
-        int getAngle();
-        int getPrevious_angle();
-        void setAngle(int value);
+        int getAngle(int n);
+        int getPrevious_angle(int n);
+        void setAngle(int n, int value);
 
         float getCurrentAngle();
 
@@ -54,8 +54,8 @@ class Elemento : public QObject {
 
         void update(Qt3DCore::QEntity *root_entity);
 
-        int angle = 0;
-        int previous_angle = 0;
+        int angle[3] = {0, 0, 0};
+        int previous_angle[3] = {0, 0, 0};
 
         // Atributos asociados a la animación
         double vel = 0;
