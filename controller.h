@@ -31,10 +31,14 @@ class Controller : public QObject {
         Qt3DCore::QTransform *target() const;
 
         void setAngle(float angle);
+        void setAngle(int n, float angle);
+
         float angle() const;
 
         void setAxis(QVector3D naxis);
+        void setAxis(int n, QVector3D naxis);
         void setPoint(QVector3D npoint);
+        void setPoint(int n, QVector3D npoint);
 
         QVector3D getAxis();
         QVector3D getPoint();
@@ -54,6 +58,10 @@ class Controller : public QObject {
         // Parámetros del sistema de referencia para la rotación
         QVector3D axis;
         QVector3D point;
+
+        float previousAngle[3];
+        QVector3D previousAxis[3];
+        QVector3D previousPoint[3];
 };
 
 QT_END_NAMESPACE

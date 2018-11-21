@@ -32,6 +32,15 @@ void Controller::setAngle(float angle){
     }
 }
 
+void Controller::setAngle(int n, float angle){
+    this->previousAngle[n] = this->angle();
+    if (!qFuzzyCompare(angle, m_angle)){
+        m_angle = angle;
+        updateMatrix();
+        emit angleChanged();
+    }
+}
+
 float Controller::angle() const {
     return m_angle;
 }
@@ -50,7 +59,17 @@ void Controller::setAxis(QVector3D naxis){
     this->axis = naxis;
 }
 
+void Controller::setAxis(int n, QVector3D naxis){
+    this->previousAxis[n] = this->axis;
+    this->axis = naxis;
+}
+
 void Controller::setPoint(QVector3D npoint){
+    this->point = npoint;
+}
+
+void Controller::setPoint(int n, QVector3D npoint){
+    this->previousPoint[n] = this->point;
     this->point = npoint;
 }
 
