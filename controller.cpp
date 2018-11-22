@@ -36,7 +36,7 @@ void Controller::setAngle(int n, float angle){
     this->previousAngle[n] = this->angle();
     if (!qFuzzyCompare(angle, m_angle)){
         m_angle = angle;
-        updateMatrix(n);
+        updateMatrix();
         emit angleChanged();
     }
 }

@@ -313,6 +313,7 @@ QString BaseRobot::toQString(){
     data += ("Velocidad art.2: " + QString::number(this->p3->getVel()) + "\n");
     data += ("Velocidad art.3: " + QString::number(this->p4->getVel()) + "\n");
     data += ("Velocidad de trabajo efector final: " + QString::number(this->ef->getVel()) + "\n");
+    data += ("Conexión: IP: " + this->ip_adress + "PORT: " + QString::number(this->PORT));
 
     return data;
 }

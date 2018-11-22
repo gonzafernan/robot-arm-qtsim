@@ -78,7 +78,7 @@ class BaseRobot : public QObject {
         void endReceiver();
 
     private:
-        const std::string ip_adress = "192.168.1.143/24";
+        const QString ip_adress = "192.168.1.143/24";
         const uint16_t PORT = 8003;
 
         std::queue<std::string> instruct;
