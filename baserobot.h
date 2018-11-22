@@ -49,6 +49,7 @@ class BaseRobot : public QObject {
         Qt3DCore::QEntity *init();
 
         void loadProgram(const QString &msg);
+        void executeLastProgram();
         void interpreteComando(std::string comando);
 
         void start();
@@ -93,6 +94,8 @@ class BaseRobot : public QObject {
         enum estado{INACTIVE, ACTIVE, RUNNING} estado = INACTIVE;
 
         void emptyInstruct();
+
+        QString lastProgram;
 };
 
 #endif // BASEROBOT_H

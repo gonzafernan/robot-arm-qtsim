@@ -48,7 +48,14 @@ void BaseRobot::loadProgram(const QString &msg){
     } else {
         std::cout << "PROBLEM OPENING FILE" << std::endl;
     }
+    this->lastProgram = msg;
     this->start();
+}
+
+void BaseRobot::executeLastProgram(){
+    if (this->lastProgram != nullptr){
+        this->loadProgram(this->lastProgram);
+    }
 }
 
 /* ----------------------------------------------------------------------------------------
@@ -149,106 +156,118 @@ void BaseRobot::turnOFF(){
 }
 
 void BaseRobot::gdl1Changed(int value){
-    std::cout << "GDL1: " << value << std::endl;
+    if (this->estado == ACTIVE){
+        std::cout << "GDL1: " << value << std::endl;
 
-    this->p2->setAxis(0, QVector3D(0, 1, 0));
-    this->p3->setAxis(0, QVector3D(0, 1, 0));
-    this->p4->setAxis(0, QVector3D(0, 1, 0));
-    this->ef->setAxis(0, QVector3D(0, 1, 0));
+        this->p2->setAxis(0, QVector3D(0, 1, 0));
+        this->p3->setAxis(0, QVector3D(0, 1, 0));
+        this->p4->setAxis(0, QVector3D(0, 1, 0));
+        this->ef->setAxis(0, QVector3D(0, 1, 0));
 
-    this->p2->setPoint(0, QVector3D(0.65f, 0.0f, 0.1f));
-    this->p3->setPoint(0, QVector3D(0.65f, 0.0f, 0.1f));
-    this->p4->setPoint(0, QVector3D(0.65f, 0.0f, 0.1f));
-    this->ef->setPoint(0, QVector3D(0.65f, 0.0f, 0.1f));
+        this->p2->setPoint(0, QVector3D(0.65f, 0.0f, 0.1f));
+        this->p3->setPoint(0, QVector3D(0.65f, 0.0f, 0.1f));
+        this->p4->setPoint(0, QVector3D(0.65f, 0.0f, 0.1f));
+        this->ef->setPoint(0, QVector3D(0.65f, 0.0f, 0.1f));
 
-    this->p2->setAngle(0, value);
-    this->p3->setAngle(0, value);
-    this->p4->setAngle(0, value);
-    this->ef->setAngle(0, value);
+        this->p2->setAngle(0, value);
+        this->p3->setAngle(0, value);
+        this->p4->setAngle(0, value);
+        this->ef->setAngle(0, value);
+    }
 }
 
 void BaseRobot::gdl2Changed(int value){
-    std::cout << "GDL2: " << value << std::endl;
-    float axisX = float(m_sin(double(this->p2->getAngle(0))));
-    float axisY = 0.0f;
-    float axisZ = float(m_cos(double(this->p2->getAngle(0))));
-    this->p3->setAxis(1, QVector3D(axisX, axisY, axisZ));
-    this->p4->setAxis(1, QVector3D(axisX, axisY, axisZ));
-    this->ef->setAxis(1, QVector3D(axisX, axisY, axisZ));
+    if (this->estado == ACTIVE){
+        std::cout << "GDL2: " << value << std::endl;
+        float axisX = float(m_sin(double(this->p2->getAngle(0))));
+        float axisY = 0.0f;
+        float axisZ = float(m_cos(double(this->p2->getAngle(0))));
+        this->p3->setAxis(1, QVector3D(axisX, axisY, axisZ));
+        this->p4->setAxis(1, QVector3D(axisX, axisY, axisZ));
+        this->ef->setAxis(1, QVector3D(axisX, axisY, axisZ));
 
-    float pointX = this->p1->getPoint().x() + 2.35f * float(m_cos(double(this->p2->getAngle(0))));
-    float pointY = this->p1->getPoint().y() - 0.9f + 10.0f;
-    float pointZ = this->p1->getPoint().z() - 0.1f - 2.35f * float(m_sin(double(this->p2->getAngle(0))));
+        float pointX = this->p1->getPoint().x() + 2.35f * float(m_cos(double(this->p2->getAngle(0))));
+        float pointY = this->p1->getPoint().y() - 0.9f + 10.0f;
+        float pointZ = this->p1->getPoint().z() - 0.1f - 2.35f * float(m_sin(double(this->p2->getAngle(0))));
 
-    this->p3->setPoint(1, QVector3D(pointX, pointY,  pointZ));
-    this->p4->setPoint(1, QVector3D(pointX, pointY,  pointZ));
-    this->ef->setPoint(1, QVector3D(pointX, pointY,  pointZ));
+        this->p3->setPoint(1, QVector3D(pointX, pointY,  pointZ));
+        this->p4->setPoint(1, QVector3D(pointX, pointY,  pointZ));
+        this->ef->setPoint(1, QVector3D(pointX, pointY,  pointZ));
 
-    this->p3->setAngle(1, value);
-    this->p4->setAngle(1, value);
-    this->ef->setAngle(1, value);
+        this->p3->setAngle(1, value);
+        this->p4->setAngle(1, value);
+        this->ef->setAngle(1, value);
+    }
 }
 
 void BaseRobot::gdl3Changed(int value){
-    std::cout << "GDL3: " << value << std::endl;
-    // El casteo de las siguientes lineas debe corregirse
-    double aux = - PIEZA3_LONG * m_sin(this->p3->getAngle(0));
-    float auxX = static_cast<float>(this->p1->getPoint().x()) + 2.0f * static_cast<float>(m_cos(this->p2->getAngle(0)));
-    float auxY = static_cast<float>(this->p1->getPoint().y()) + static_cast<float>(PIEZA3_LONG * m_cos(this->p3->getAngle(0))) + 10.0f - 1.0f;
-    float auxZ = static_cast<float>(this->p1->getPoint().z()) - 0.1f - 2.35f * static_cast<float>(m_sin(this->p2->getAngle(0)) - aux * m_sin(this->p2->getAngle(0)));
+    if (this->estado == ACTIVE){
+        std::cout << "GDL3: " << value << std::endl;
+        // El casteo de las siguientes lineas debe corregirse
+        double aux = - PIEZA3_LONG * m_sin(this->p3->getAngle(0));
+        float auxX = static_cast<float>(this->p1->getPoint().x()) + 2.0f * static_cast<float>(m_cos(this->p2->getAngle(0)));
+        float auxY = static_cast<float>(this->p1->getPoint().y()) + static_cast<float>(PIEZA3_LONG * m_cos(this->p3->getAngle(0))) + 10.0f - 1.0f;
+        float auxZ = static_cast<float>(this->p1->getPoint().z()) - 0.1f - 2.35f * static_cast<float>(m_sin(this->p2->getAngle(0)) - aux * m_sin(this->p2->getAngle(0)));
 
-    this->p4->setAxis(2, QVector3D(static_cast<float>(m_sin(this->p2->getAngle(0))), 0, static_cast<float>(m_cos(this->p2->getAngle(0)))));
-    this->p4->setPoint(2, QVector3D(auxX, auxY, auxZ));
+        this->p4->setAxis(2, QVector3D(static_cast<float>(m_sin(this->p2->getAngle(0))), 0, static_cast<float>(m_cos(this->p2->getAngle(0)))));
+        this->p4->setPoint(2, QVector3D(auxX, auxY, auxZ));
 
-    this->p4->setAngle(2, value);
+        this->p4->setAngle(2, value);
 
-    this->ef->setAxis(2, QVector3D(static_cast<float>(m_sin(this->p2->getAngle(0))), 0, static_cast<float>(m_cos(this->p2->getAngle(0)))));
-    this->ef->setPoint(2, QVector3D(auxX, auxY, auxZ));
+        this->ef->setAxis(2, QVector3D(static_cast<float>(m_sin(this->p2->getAngle(0))), 0, static_cast<float>(m_cos(this->p2->getAngle(0)))));
+        this->ef->setPoint(2, QVector3D(auxX, auxY, auxZ));
 
-    this->ef->setAngle(2, value);
+        this->ef->setAngle(2, value);
+    }
 }
 
 void BaseRobot::externalGdl1(int value){
-    QParallelAnimationGroup *motion = new QParallelAnimationGroup;
-    this->gdl1Changed(value);
+    if (this->estado == ACTIVE){
+        QParallelAnimationGroup *motion = new QParallelAnimationGroup;
+        this->gdl1Changed(value);
 
-    motion->addAnimation(this->p2->animate(this->p2->getPrevious_angle(0), this->p2->getAngle(0), this->p2->getDuration()));
-    motion->addAnimation(this->p3->animate(this->p3->getPrevious_angle(0), this->p3->getAngle(0), this->p3->getDuration()));
-    motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(0), this->p4->getAngle(0), this->p4->getDuration()));
-    motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(0), this->ef->getAngle(0), this->ef->getDuration()));
+        motion->addAnimation(this->p2->animate(this->p2->getPrevious_angle(0), this->p2->getAngle(0), this->p2->getDuration()));
+        motion->addAnimation(this->p3->animate(this->p3->getPrevious_angle(0), this->p3->getAngle(0), this->p3->getDuration()));
+        motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(0), this->p4->getAngle(0), this->p4->getDuration()));
+        motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(0), this->ef->getAngle(0), this->ef->getDuration()));
 
-    this->currentAnimation = motion;
-    connect(motion, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
-    motion->start();
-    this->estado = RUNNING;
+        this->currentAnimation = motion;
+        connect(motion, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
+        motion->start();
+        this->estado = RUNNING;
+    }
 }
 
 void BaseRobot::externalGdl2(int value){
-    QParallelAnimationGroup *motion = new QParallelAnimationGroup;
-    this->gdl2Changed(value);
+    if (this->estado == ACTIVE){
+        QParallelAnimationGroup *motion = new QParallelAnimationGroup;
+        this->gdl2Changed(value);
 
-    motion->addAnimation(this->p3->animate(this->p3->getPrevious_angle(1), this->p3->getAngle(1), this->p3->getDuration()));
-    motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(1), this->p4->getAngle(1), this->p4->getDuration()));
-    motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(1), this->ef->getAngle(1), this->ef->getDuration()));
+        motion->addAnimation(this->p3->animate(this->p3->getPrevious_angle(1), this->p3->getAngle(1), this->p3->getDuration()));
+        motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(1), this->p4->getAngle(1), this->p4->getDuration()));
+        motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(1), this->ef->getAngle(1), this->ef->getDuration()));
 
-    this->currentAnimation = motion;
-    connect(motion, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
-    motion->start();
-    this->estado = RUNNING;
+        this->currentAnimation = motion;
+        connect(motion, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
+        motion->start();
+        this->estado = RUNNING;
+    }
 }
 
 void BaseRobot::externalGdl3(int value){
-    QParallelAnimationGroup *motion = new QParallelAnimationGroup;
+    if (this->estado == ACTIVE){
+        QParallelAnimationGroup *motion = new QParallelAnimationGroup;
 
-    this->gdl3Changed(value);
+        this->gdl3Changed(value);
 
-    motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(2), this->p4->getAngle(2), this->p4->getDuration()));
-    motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(2), this->ef->getAngle(2), this->ef->getDuration()));
+        motion->addAnimation(this->p4->animate(this->p4->getPrevious_angle(2), this->p4->getAngle(2), this->p4->getDuration()));
+        motion->addAnimation(this->ef->animate(this->ef->getPrevious_angle(2), this->ef->getAngle(2), this->ef->getDuration()));
 
-    this->currentAnimation = motion;
-    connect(motion, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
-    motion->start();
-    this->estado = RUNNING;
+        this->currentAnimation = motion;
+        connect(motion, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
+        motion->start();
+        this->estado = RUNNING;
+    }
 }
 
 void BaseRobot::externalV1(double value){

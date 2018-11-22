@@ -58,7 +58,5 @@ void ModoOperacion::on_homing_clicked(){
 }
 
 void ModoOperacion::on_pushButton_3_clicked(){
-    if (this->file_manager->getProgram() != nullptr){
-        this->br->loadProgram(this->file_manager->getProgram());
-    }
+    this->br->executeLastProgram();
 }
