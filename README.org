@@ -49,6 +49,25 @@ de piezas en formato /.stl/, y con ayuda del software libre /Blender/,
 se exportó este ensamble en una versión simplificada de 5 piezas en
 formato /.obj/, que se encuentran en la carpeta [[./assets/][assets]].
 
+* Instrucciones G-Code
+El robot está configurado para recibir comandos similares al estándar
+G-Code de RepRap. A continuación se enlista las instrucciones disponibles hasta el momento:
+
+| Instrucción | Descripción                                                                |
+|-------------+----------------------------------------------------------------------------|
+| G0 AX PY    | *Consigna de posición*, donde X es la articulación a rotar e Y los grados. |
+| G1 AX VY    | *Consigna de velocidad*, donde X es la articulación a setear velocidad     |
+|             | e Y el valor de la velocidad en radianes por segundo [rad/s].              |
+| G28         | *Homing* y/o *encender* robot.                                             |
+| M0          | *Apagar* robot.                                                            |
+| TX          | Cambio de *actividad del efector final*. Donde X es:                       |
+|             | + 0: Pintar                                                                |
+|             | + 1: Sostener                                                              |
+|             | + 2: Soltar                                                                |
+|             | + 3: Rotar                                                                 |
+| DXX         | *Duración de la actividad del efector final*, dada en segundos [s].        |
+| EF          | *Inicio de actividad del efector final*.                                   |
+
 * Interfaz gráfica de usuario
 Como ya se mencionó anteriormente, la interfaz gráfica de usuario se
 diseña utilizando librerías proveídas por Qt, en este caso las
