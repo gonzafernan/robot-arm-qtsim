@@ -11,6 +11,8 @@
 #include <Qt3DExtras/QPhongMaterial>
 #include <QPropertyAnimation>
 
+#include <iostream>
+
 QT_BEGIN_NAMESPACE
 
 namespace Qt3DCore {
@@ -50,12 +52,19 @@ class Controller : public QObject {
         QVector3D getPoint();
         QVector3D getPoint(int n);
 
+        void setPreviousAxis(QVector3D axis[3]);
+        void setPreviousPoint(QVector3D point[3]);
+        void setPreviousAngle0(float angle);
+        void setPreviousAngle1(float angle);
+        void setPreviousAngle2(float angle);
+
     signals:
         void targetChanged();
         void angleChanged();
 
     protected:
         void updateMatrix();
+        void updateMatrix(int n);
 
     private:
         Qt3DCore::QTransform *m_target;

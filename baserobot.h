@@ -33,6 +33,8 @@
 #include <iostream>
 #include <fstream>
 
+#include <queue>
+
 #include "m_function.h"
 #include "elemento.h"
 #include "efectorfinal.h"
@@ -48,6 +50,8 @@ class BaseRobot : public QObject {
 
         void loadProgram(const QString &msg);
         void interpreteComando(std::string comando);
+
+        void start();
 
         void turnON();
         void turnOFF();
@@ -76,6 +80,8 @@ class BaseRobot : public QObject {
         const std::string ip_adress = "192.168.1.143/24";
         const uint16_t PORT = 8003;
 
+        std::queue<std::string> instruct;
+
         Elemento *p1;
         Elemento *p2;
         Elemento *p3;
@@ -85,6 +91,8 @@ class BaseRobot : public QObject {
         QParallelAnimationGroup *currentAnimation = nullptr;
 
         enum estado{INACTIVE, ACTIVE, RUNNING} estado = INACTIVE;
+
+        void emptyInstruct();
 };
 
 #endif // BASEROBOT_H

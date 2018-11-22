@@ -35,7 +35,9 @@ class ModoOperacion : public QWidget, public ConjuntoInterfaz {
         void on_v2_sliderReleased();
         void on_v3_sliderReleased();
 
-    private:
+        void on_homing_clicked();
+
+private:
         Ui::ModoOperacion *ui;
         QString lastProgram;
 

@@ -56,3 +56,7 @@ void ModoOperacion::on_v3_sliderReleased(){
 void ModoOperacion::setLastProgram(QString direc){
     this->lastProgram = direc;
 }
+
+void ModoOperacion::on_homing_clicked(){
+    this->br->turnON();
+}

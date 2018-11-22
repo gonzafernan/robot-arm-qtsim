@@ -42,12 +42,13 @@ void BaseRobot::loadProgram(const QString &msg){
     if (file.is_open()){
         while (std::getline(file, comando)){
             std::cout << comando << std::endl;
-            this->interpreteComando(comando);
+            this->instruct.push(comando);
         }
         file.close();
     } else {
         std::cout << "PROBLEM OPENING FILE" << std::endl;
     }
+    this->start();
 }
 
 /* ----------------------------------------------------------------------------------------
@@ -119,41 +120,28 @@ void BaseRobot::interpreteComando(std::string comando){
         this->ef->setDuration(atoi(aux1));
     } else if (comando[0] == 'E' && comando[1] == 'F'){
         this->ef->work();
-        std::cout << "END" << std::endl;
+        this->endReceiver();
     }
+}
+
+void BaseRobot::start(){
+    // Alarma
+    QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
+    this->interpreteComando(this->instruct.front());
+    this->instruct.pop();
 }
 
 void BaseRobot::turnON(){
     std::cout << "ON" << std::endl;
     this->estado = ACTIVE;
-    // ROTACIÓN DEL PRIMER GRADO DE LIBERTAD
-    QParallelAnimationGroup *homing = new QParallelAnimationGroup;
-    //QObject::connect(homing, SIGNAL(finished()), this, SLOT(animationFlag()));
-    gdl1Changed(0);
-
-    homing->addAnimation(this->p2->animate(this->p2->getPrevious_angle(0), this->p2->getAngle(0), this->p2->getDuration()));
-    homing->addAnimation(this->p3->animate(this->p3->getPrevious_angle(0), this->p3->getAngle(0), this->p3->getDuration()));
-    homing->addAnimation(this->p4->animate(this->p4->getPrevious_angle(0), this->p4->getAngle(0), this->p4->getDuration()));
-    homing->addAnimation(this->ef->animate(this->ef->getPrevious_angle(0), this->ef->getAngle(0), this->ef->getDuration()));
-
-    gdl2Changed(0);
-    homing->addAnimation(this->p3->animate(this->p3->getPrevious_angle(1), this->p3->getAngle(1), this->p3->getDuration()));
-    homing->addAnimation(this->p4->animate(this->p4->getPrevious_angle(1), this->p4->getAngle(1), this->p4->getDuration()));
-    homing->addAnimation(this->ef->animate(this->ef->getPrevious_angle(1), this->ef->getAngle(1), this->ef->getDuration()));
-
-    gdl3Changed(90);
-    homing->addAnimation(this->p4->animate(this->p4->getPrevious_angle(2), this->p4->getAngle(2), this->p4->getDuration()));
-    homing->addAnimation(this->ef->animate(this->ef->getPrevious_angle(2), this->ef->getAngle(2), this->ef->getDuration()));
-
-    // Alarma
-    QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
-    this->currentAnimation = homing;
-    connect(homing, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
-    homing->start();
-    this->estado = RUNNING;
+    this->emptyInstruct();
+    this->instruct.push("G0A1P90");
+    this->instruct.push("G0A3P90");
+    this->start();
 }
 
 void BaseRobot::turnOFF(){
+    this->emptyInstruct();
     this->estado = INACTIVE;
     if (this->currentAnimation != nullptr){
         this->currentAnimation->stop();
@@ -266,28 +254,37 @@ void BaseRobot::externalGdl3(int value){
 void BaseRobot::externalV1(double value){
     std::cout << "V1: " << value/10 << std::endl;
     this->p2->setVel(value);
+    this->endReceiver();
 }
 
 void BaseRobot::externalV2(double value){
     std::cout << "V2: " << value/10 << std::endl;
     this->p3->setVel(value);
+    this->endReceiver();
 }
 
 void BaseRobot::externalV3(double value){
     std::cout << "V3: " << value/10 << std::endl;
     this->p4->setVel(value);
     this->ef->setVel(value);
+    this->endReceiver();
 }
 
 void BaseRobot::endReceiver(){
     if (this->estado == RUNNING){
         this->estado = ACTIVE;
     }
-    std::cout << "END" << std::endl;
+    if (this->instruct.empty()){
+        std::cout << "END" << std::endl;
+    } else {
+        this->interpreteComando(this->instruct.front());
+        this->instruct.pop();
+    }
 }
 
 QString BaseRobot::toQString(){
     QString data;
+    data+= ("Estado actual: " + this->getEstado() + "\n");
     data += ("Ángulo de cada pieza:\n");
     data += ("'Angulo pieza 2: " + QString::number(RadtoDegree(this->p2->getCurrentAngle())) + "\n");
     data += ("'Angulo pieza 3: " + QString::number(RadtoDegree(this->p3->getCurrentAngle())) + "\n");
@@ -327,4 +324,10 @@ QString BaseRobot::get_efDuracion(){
     QString data;
     data = QString::number(this->ef->getDuracion());
     return data;
+}
+
+void BaseRobot::emptyInstruct(){
+    while (!this->instruct.empty()){
+        this->instruct.pop();
+    }
 }

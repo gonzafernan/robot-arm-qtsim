@@ -94,6 +94,18 @@ void Elemento::setAngle(int n, int value){
     } else {
         this->duration = static_cast<int>(INFINITY);
     }
+
+    switch (n) {
+    case 0:
+        this->controller->setPreviousAngle0(value);
+        break;
+    case 1:
+        this->controller->setPreviousAngle1(value);
+        break;
+    case 2:
+        this->controller->setPreviousAngle2(value);
+        break;
+    }
 }
 
 float Elemento::getCurrentAngle(){
