@@ -13,7 +13,8 @@ ModoOperacion::~ModoOperacion(){
 }
 
 void ModoOperacion::on_Archivo_clicked(){
-    FileManager *file_manager = new FileManager();
+    this->file_manager = new FileManager();
+    this->file_manager->setData(this->br);
     file_manager->show();
 }
 
@@ -24,7 +25,6 @@ void ModoOperacion::on_pushButton_clicked(){
 void ModoOperacion::on_execute_clicked(){
     QString comando;
     comando = ui->textEdit->toPlainText();
-    //ui->textEdit->setPlainText(comando);
     ui->textEdit->clear();
     this->br->interpreteComando(comando.toStdString());
 }
@@ -53,10 +53,12 @@ void ModoOperacion::on_v3_sliderReleased(){
     this->br->externalV3(ui->v3->value());
 }
 
-void ModoOperacion::setLastProgram(QString direc){
-    this->lastProgram = direc;
-}
-
 void ModoOperacion::on_homing_clicked(){
     this->br->turnON();
+}
+
+void ModoOperacion::on_pushButton_3_clicked(){
+    if (this->file_manager->getProgram() != nullptr){
+        this->br->loadProgram(this->file_manager->getProgram());
+    }
 }

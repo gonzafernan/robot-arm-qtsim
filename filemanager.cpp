@@ -1,4 +1,5 @@
 #include "filemanager.h"
+#include "modooperacion.h"
 
 FileManager::FileManager(QWidget *parent) :
     QMainWindow(parent),
@@ -47,4 +48,8 @@ void FileManager::on_AceptarF_clicked(){
 
 void FileManager::on_CancelarF_clicked(){
     this->hide();
+}
+
+QString FileManager::getProgram(){
+    return this->program;
 }

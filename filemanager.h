@@ -22,6 +22,8 @@ class FileManager : public QMainWindow, public ConjuntoInterfaz {
         explicit FileManager(QWidget *parent = nullptr);
         ~FileManager();
 
+        QString getProgram();
+
     public slots:
         void on_action_Open_File_triggered();
         void on_AceptarF_clicked();
