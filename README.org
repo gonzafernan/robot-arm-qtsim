@@ -132,7 +132,7 @@ específicamente la versión 5.11.\\
 ** Diagrama UML
 *** BaseRobot
 Como puede observarse en el diagrama, la clase principal del proyecto
-es la denominada *BaseRobot*, está clase es la encargada del manejo de
+es la denominada /BaseRobot/, está clase es la encargada del manejo de
 datos y comunicación con la interfaz gráfica de usuario. Es por esto
 que la instanciación de BaseRobot en todo el proyecto es solo una, y
 se ve agregada en todas las diferentes clases relacionadas con la
@@ -184,5 +184,12 @@ configuración de la animación, como la duración de ésta en base a la
 velocidad seteada.\\
 Cada elemento agrega un objeto clase /Controller/ que se describe más
 adelante.
+
+*** EfectorFinal
+La clase /EfectorFinal/ es una clase que hereda de /Elemento/ y está
+asociada al efector final del robot. En ella se encuentran métodos y
+atributos para el control de la tarea que debe ejecutar y su
+duración. Las posibles tareas son /pintar/, /sostener/, /soltar/ y
+/rotar/.
 
 ** Diagrama de secuencia temporal
