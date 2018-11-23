@@ -165,4 +165,24 @@ limpiar dicha cola, ésto sucede cuándo se realiza una maniobra de
 Final/ que contienen la información relacionada a cada pieza "física"
 del brazo.
 
+*** Elemento
+La clase /Elemento/ es la clase encargada de albergar toda la
+información correspondiente a la pieza del brazo de su
+instanciación. Su constructor recibe como parámetro el /rootEntity/ de
+la entidad robot que se crea en BaseRobot. También hereda la librería
+/QObject/ al igual que /BaseRobot/.\\
+Los parámetros de esta clase están muy relacionados al render de la
+pieza, del modelo /.obj/: un /mesh/ del modelo 3D en sí, un /material/
+que provee el framework,  una /animación/ con la que se trabajará para
+parametrizar los movimientos, una /transformación/, herramienta con la
+que se ejecutan las traslaciones y rotaciones del mesh y una /entidad/ propia a la que se le agregas
+los componentes anteriores.\\
+Además de toda la información anterior, los métodos de la clase
+permiten el get y set de los puntos, ejes y ángulos necesarios para
+definir la configuración de la pieza. Otros métodos dan la
+configuración de la animación, como la duración de ésta en base a la
+velocidad seteada.\\
+Cada elemento agrega un objeto clase /Controller/ que se describe más
+adelante.
+
 ** Diagrama de secuencia temporal
