@@ -64,7 +64,6 @@ class Controller : public QObject {
 
     protected:
         void updateMatrix();
-        void updateMatrix(int n);
 
     private:
         Qt3DCore::QTransform *m_target;
