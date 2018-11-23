@@ -74,6 +74,7 @@ Controllers/, donde se hace zoom con el scroll del mouse, se traslada
 con el click izquierdo y se rota con el click derecho.\\
 [[./vids/3Dwindow.gif]]
 ** Panel de control
+
 *** Ventana principal
 El panel de control consiste en una ventana principal (clase
 /Widget/), con botones que permiten el encendido y apagado del
@@ -91,7 +92,6 @@ comandos" y "Comenzar movimiento" abren las otras respectivas
 ventanas.\\
 En el inferior de la ventana se encuentra el botón salir para cerrar
 ésta.
-
 *** Características
 Desde la ventana principal, si se presiona el botón "Establecer
 características iniciales", se abre la ventana de "Características".\\
@@ -126,7 +126,7 @@ En la parte inferior de la ventana se encuentran dos botones,
 "Aceptar" y "Cancelar". El botón Aceptar cargará el programa
 seleccionado y lo ejecutará, El botón Cancelar cerrará la ventana sin
 que ninguna acción suceda.
-* Descripción del programa
+* Descripción del control de la simulación
 Como se mencionó antes, el proyecto está desarrollado en C++ basado en el framework Qt5,
 específicamente la versión 5.11.\\
 ** Diagrama UML
@@ -191,5 +191,21 @@ asociada al efector final del robot. En ella se encuentran métodos y
 atributos para el control de la tarea que debe ejecutar y su
 duración. Las posibles tareas son /pintar/, /sostener/, /soltar/ y
 /rotar/.
+
+*** Controller
+La clase /Controller/ instancia los controladores de cada
+/Elemento/. Estos controladores tienen como /target/ los atributos
+/QTransform/ de cada elemento, es decir, manejan el aspecto de
+transformación de los mesh de cada parte del robot. Esta manipulación
+de la transformación es para dar los valores de la configuración de la
+pieza en cada /frame/ de la animación. Por lo tanto, hay métodos
+encadenados con métodos de la clase /Elemento/ correspondiente como los
+get y set de los puntos, ejes y ángulos de la pieza.\\
+La función más importante de la clase /Controller/ es la que actualiza
+la matriz 4x4 característica de la transformación del elemento, donde
+está la información correspondiente a traslaciones y rotaciones
+ejecutadas sobre la pieza.\\
+Existen señales internas en la clase que informan el cambio en el
+ángulo o target seteado en la instanciación del controlador.
 
 ** Diagrama de secuencia temporal
