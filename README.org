@@ -4,7 +4,7 @@
 El presente trabajo se responde a lo solicitado como trabajo práctico
 integrador de la cátedra de *Programación Orientada a Objetos* de la
 /Facultad de Ingeniería/ de la /Universidad Nacional de Cuyo/,
-Mendoza, Argentina. Año 2018.
+Mendoza, Argentina. Año 2018. Prof. Ing. César Aranda.
 * Objetivos
 El objetivo del trabajo consiste en controlar un robot de 3 grados de libertad con
 efector final, a modo de simulación.
@@ -131,7 +131,7 @@ Como se mencionó antes, el proyecto está desarrollado en C++ basado en el fram
 específicamente la versión 5.11.\\
 ** Diagrama UML
 *** BaseRobot
-Como puede observarse en el diagrama, la clase principal del proyecto
+Como puede observarse en el diagrama UML, la clase principal del proyecto
 es la denominada /BaseRobot/, está clase es la encargada del manejo de
 datos y comunicación con la interfaz gráfica de usuario. Es por esto
 que la instanciación de BaseRobot en todo el proyecto es solo una, y
@@ -207,5 +207,29 @@ está la información correspondiente a traslaciones y rotaciones
 ejecutadas sobre la pieza.\\
 Existen señales internas en la clase que informan el cambio en el
 ángulo o target seteado en la instanciación del controlador.
+
+*** ConjuntoInterfaz
+La clase /ConjuntoInterfaz/ es una superclase de todas aquellas
+relacionadas con la interfaz gráfica de usuario.\\
+Agrega a /BaseRobot/ y tiene como método una función que permite
+setear éste atributo con la instancia de /BaseRobot/
+correspondiente. Por lo que permite vincular a todas las clases
+relacionadas con la GUI a las clases orientadas al control de la
+simulación.
+
+*** Otras clases
+Las clases /Widget/, /DataList/, /ModoOperacion/ y /FileManager/ son
+las relacionadas con la GUI. Para no extender la descripción del
+código, no se realiza un análisis detallado de sus métodos y
+atributos, éstos están muy relacionados con el diseño de las
+diferentes ventanas asociadas que se describen en la sección de ésta
+temática. Sin embargo, si vale resaltar que se implementan utilizando
+/signals/,  /slots/ y objetos /ui/; donde gran parte del código es
+generado automáticamente por el IDE de Qt /QtCreator/. Otro aspecto a
+resaltar, es que estas clases tienen herencia múltiple: de la clase
+/ConjuntoInterfaz/ como ya se mencionó, y de /QWidget/, librería
+propia del framework como /QObject/. La librería /QWidget/ permite
+dentro del IDE diseñar las ventanas de una forma más didáctica y
+facilita la tarea con la herramienta /Design/. 
 
 ** Diagrama de secuencia temporal
