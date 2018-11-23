@@ -45,7 +45,7 @@ Series]] que responde al modelo RRR.
 El modelo se encontraba en formato con extensión /.stp/. Para poder
 utilizarlo correctamente en el framework Qt5, se convirtió el modelo a
 formato /.obj/. El proceso de conversión fue de /.stp/ a un ensamble
-de piezas en formato /.stl/, y con ayuda del software libre /Blender/,
+de piezas en formato /.stl/, y con ayuda del software /Blender/,
 se exportó este ensamble en una versión simplificada de 5 piezas en
 formato /.obj/, que se encuentran en la carpeta [[./assets/][assets]].
 
@@ -126,3 +126,43 @@ En la parte inferior de la ventana se encuentran dos botones,
 "Aceptar" y "Cancelar". El botón Aceptar cargará el programa
 seleccionado y lo ejecutará, El botón Cancelar cerrará la ventana sin
 que ninguna acción suceda.
+* Descripción del programa
+Como se mencionó antes, el proyecto está desarrollado en C++ basado en el framework Qt5,
+específicamente la versión 5.11.\\
+** Diagrama UML
+*** BaseRobot
+Como puede observarse en el diagrama, la clase principal del proyecto
+es la denominada *BaseRobot*, está clase es la encargada del manejo de
+datos y comunicación con la interfaz gráfica de usuario. Es por esto
+que la instanciación de BaseRobot en todo el proyecto es solo una, y
+se ve agregada en todas las diferentes clases relacionadas con la
+GUI.\\
+Esta clase,  como muchas otras en el proyecto, hereda de /QObject/
+librería perteneciente al framework utilizado.\\
+En rasgos generales, tiene métodos para cargar archivo de texto con el
+programa G-Code a realizar, método para la ejecución de dicho
+programa gracias a otros de sus métodos más importantes que es el
+/interprete de comando/ que como su nombre indica, interpreta cada
+línea G-Code y la agraga a la cola de instrucciones (atributo de la
+clase).\\
+BaseRobot es la clase que posee métodos para la variación de los datos
+correspondientes a la configuración del robot: sus ángulos y
+velocidades. También posee información del /estado/ de éste: /activo/,
+/inactivo/ y /en movimiento/, también información necesaria para la
+comunicación con el robot: dirección IP y puerto de comunicación
+(información no representativa para la simulación).\\
+Otros métodos importantes en esta clase permiten tanto el apagado y
+encendido del robot, como el comienzo de la ejecución de su cola de
+instrucciones.\\
+Respecto a la cola de instrucciones, como los movimientos del robot
+están dados por clips de animación, cuándo cada uno de los clips
+finaliza o, más general, cuándo una instrucción finaliza, se emite una
+señal que es recibida por la clase para eliminar la instrucción de la
+cola y continuar con la siguiente. También posee un método para
+limpiar dicha cola, ésto sucede cuándo se realiza una maniobra de
+/homing/ o cuándo se apaga la máuina.\\
+Ésta clase agrega 4 objetos clase /Elemento/ y uno clase /Efector
+Final/ que contienen la información relacionada a cada pieza "física"
+del brazo.
+
+** Diagrama de secuencia temporal
