@@ -42,6 +42,15 @@ class Controller : public QObject {
         QVector3D getAxis();
         QVector3D getPoint();
 
+        float _Angle[3] = {0, 0, 0};
+        float prevAngle[3] = {0, 0, 0};
+        QVector3D _Axis[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
+        QVector3D prevAxis[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
+        QVector3D _Point[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
+        QVector3D prevPoint[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
+
+        int n;
+
     signals:
         void targetChanged();
         void angleChanged();

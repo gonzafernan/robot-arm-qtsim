@@ -51,11 +51,23 @@ QPropertyAnimation *Elemento::animate(int start, int end, int duration, int n){
 }
 
 void Elemento::setAxis(int n, QVector3D naxis){
+    this->previous_axis[n] = this->axis[n];
+    this->axis[n] = naxis;
     this->cont[n]->setAxis(naxis);
+    for (int i=0; i<3; i++){
+        this->cont[i]->prevAxis[n] = this->previous_axis[i];
+        this->cont[i]->_Axis[n] = naxis;
+    }
 }
 
 void Elemento::setPoint(int n, QVector3D npoint){
+    this->previous_point[n] = this->point[n];
+    this->point[n] = npoint;
     this->cont[n]->setPoint(npoint);
+    for (int i=0; i<3; i++){
+        this->cont[i]->prevPoint[n] = this->previous_point[i];
+        this->cont[i]->_Point[n] = npoint;
+    }
 }
 
 QVector3D Elemento::getAxis(int n){
@@ -81,6 +93,11 @@ void Elemento::setAngle(int n, int value){
         this->duration = static_cast<int>(std::abs(this->angle[n] - this->previous_angle[n])*1000*(M_PI/180)/this->vel);
     } else {
         this->duration = static_cast<int>(INFINITY);
+    }
+    for (int i=0; i<3; i++){
+        this->cont[i]->n = n;
+        this->cont[i]->prevAngle[n] = this->previous_angle[i];
+        this->cont[i]->_Angle[n] = value;
     }
 }
 

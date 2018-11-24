@@ -36,9 +36,30 @@ float Controller::angle() const {
     return m_angle;
 }
 
+/*
+ * Creo que encontré la solución al problema de las rotaciones,
+ * hay que premultiplicar por lo cambios previos las matrices 4x4
+ */
+
 void Controller::updateMatrix(){
-    m_target->setMatrix(this->target()->rotateAround(QVector3D(0, 0, 0), 90, QVector3D(0, 1, 0)));
-    m_target->setMatrix(this->target()->rotateAround(QVector3D(0, 0, 0), 90, QVector3D(0, 1, 0)) * this->target()->rotateAround(this->point, this->m_angle, this->axis));
+    QMatrix4x4 aux;
+    aux.setToIdentity();
+    if (this->n != 0){
+        aux = this->target()->rotateAround(this->_Point[0], this->_Angle[0], this->_Axis[0])*aux;
+    } //else {
+    //    aux = this->target()->rotateAround(this->prevPoint[0], this->prevAngle[0], this->prevAxis[0])*aux;
+    //}
+    if (this->n != 1){
+        aux = this->target()->rotateAround(this->_Point[1], this->_Angle[1], this->_Axis[1])*aux;
+    } //else {
+    //    aux = this->target()->rotateAround(this->prevPoint[1], this->prevAngle[1], this->prevAxis[1])*aux;
+    //}
+    if (this->n != 2){
+        aux = this->target()->rotateAround(this->_Point[2], this->_Angle[2], this->_Axis[2])*aux;
+    } //else {
+    //    aux = this->target()->rotateAround(this->prevPoint[2], this->prevAngle[2], this->prevAxis[2])*aux;
+    //}
+    m_target->setMatrix(this->target()->rotateAround(this->point, this->m_angle, this->axis)*aux);
 }
 
 void Controller::setAxis(QVector3D naxis){

@@ -57,6 +57,12 @@ class Elemento : public QObject {
         int angle[3] = {0, 0, 0};
         int previous_angle[3] = {0, 0, 0};
 
+        QVector3D axis[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
+        QVector3D previous_axis[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
+
+        QVector3D point[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
+        QVector3D previous_point[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
+
         // Atributos asociados a la animación
         double vel = 0;
         int duration = 0;

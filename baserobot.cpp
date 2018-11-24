@@ -157,7 +157,7 @@ void BaseRobot::gdl1Changed(int value){
     if (this->estado == ACTIVE){
         std::cout << "GDL1: " << value << std::endl;
         // Alarma
-        QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
+        //QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
 
         this->p2->setAxis(0, QVector3D(0, 1, 0));
         this->p3->setAxis(0, QVector3D(0, 1, 0));
@@ -180,7 +180,7 @@ void BaseRobot::gdl2Changed(int value){
     if (this->estado == ACTIVE){
         std::cout << "GDL2: " << value << std::endl;
         // Alarma
-        QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
+        //QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
         /*
         float axisX = float(m_sin(double(this->p2->getAngle(0))));
         float axisY = 0.0f;
@@ -201,20 +201,22 @@ void BaseRobot::gdl2Changed(int value){
         this->p4->setAngle(1, value);
         this->ef->setAngle(1, value);
         */
-        this->p2->setAxis(1, QVector3D(0, 0, 1));
+
+        //this->p2->setAxis(1, QVector3D(0, 0, 1));
         this->p3->setAxis(1, QVector3D(0, 0, 1));
         this->p4->setAxis(1, QVector3D(0, 0, 1));
         this->ef->setAxis(1, QVector3D(0, 0, 1));
 
-        this->p2->setPoint(1, QVector3D(0, 0, 0));
-        this->p3->setPoint(1, QVector3D(0, 0, 0));
-        this->p4->setPoint(1, QVector3D(0, 0, 0));
-        this->ef->setPoint(1, QVector3D(0, 0, 0));
+        //this->p2->setPoint(1, QVector3D(0.65 + 2.35, 9.1f, 0));
+        this->p3->setPoint(1, QVector3D(0.65 + 2.35, 9.1f, 0));
+        this->p4->setPoint(1, QVector3D(0.65 + 2.35, 9.1f, 0));
+        this->ef->setPoint(1, QVector3D(0.65 + 2.35, 9.1f, 0));
 
         this->p2->setAngle(1, value);
         this->p3->setAngle(1, value);
         this->p4->setAngle(1, value);
         this->ef->setAngle(1, value);
+
     }
 }
 
@@ -223,7 +225,7 @@ void BaseRobot::gdl3Changed(int value){
         std::cout << "GDL3: " << value << std::endl;
         // Alarma
         QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
-
+        /*
         // El casteo de las siguientes lineas debe corregirse
         double aux = - PIEZA3_LONG * m_sin(this->p3->getAngle(0));
         float auxX = static_cast<float>(this->p1->getPoint(2).x()) + 2.0f * static_cast<float>(m_cos(this->p2->getAngle(0)));
@@ -239,6 +241,16 @@ void BaseRobot::gdl3Changed(int value){
         this->ef->setPoint(2, QVector3D(auxX, auxY, auxZ));
 
         this->ef->setAngle(2, value);
+        */
+        this->p4->setAxis(2, QVector3D(0, 0, 1));
+        this->ef->setAxis(2, QVector3D(0, 0, 1));
+
+        this->p4->setPoint(1, QVector3D(0.65 + 2.35, 9.1f, float(PIEZA3_LONG) + 10.0f));
+        this->ef->setPoint(1, QVector3D(0.65 + 2.35, 9.1f, float(PIEZA3_LONG) + 10.0f));
+
+        this->p4->setAngle(2, value);
+        this->ef->setAngle(2, value);
+
     }
 }
 
