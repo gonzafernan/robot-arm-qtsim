@@ -216,6 +216,9 @@
     </property>
    </widget>
    <widget class="QSlider" name="gdl1">
+    <property name="minimum">
+     <number>-359</number>
+    </property>
     <property name="maximum">
      <number>359</number>
     </property>
@@ -229,8 +232,11 @@
     </property>
    </widget>
    <widget class="QSlider" name="gdl2">
+    <property name="minimum">
+     <number>-45</number>
+    </property>
     <property name="maximum">
-     <number>359</number>
+     <number>90</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -242,8 +248,11 @@
     </property>
    </widget>
    <widget class="QSlider" name="gdl3">
+    <property name="minimum">
+     <number>-45</number>
+    </property>
     <property name="maximum">
-     <number>359</number>
+     <number>90</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>

@@ -130,6 +130,16 @@ que ninguna acción suceda.
 Como se mencionó antes, el proyecto está desarrollado en C++ basado en el framework Qt5,
 específicamente la versión 5.11.\\
 ** Diagrama UML
+El diagrama UML de la figura fue realizado con el software /Umbrello
+UML Modeller/. Es provisorio ya que todavía está sujeto a cambios,
+pero estos cambios no provocarías grandes modificaciones en la
+estructura del proyecto y, por lo tanto, en el plano, sino más bien
+son cambios que modificarían algunos métodos de la clase /BaseRobot/,
+/Elemento/ y /Controller/.
+
+#+CAPTION: Diagrama UML provisorio del proyecto.
+#+NAME:   fig:UML
+[[./imgs/diagramaUML.png]]
 *** BaseRobot
 Como puede observarse en el diagrama UML, la clase principal del proyecto
 es la denominada /BaseRobot/, está clase es la encargada del manejo de
