@@ -243,12 +243,24 @@ dentro del IDE diseñar las ventanas de una forma más didáctica y
 facilita la tarea con la herramienta /Design/. 
 
 ** Diagrama de secuencia temporal
+Los diagramas de secuencia expuestos a continuación, fueron realizados
+al igual que el diagrama UML, con el software /Umbrello UML
+Modeller/.\\
 El orden de instanciación de objetos al lanzar o ejecutar la
 aplicación es como el que sigue:
 
 #+CAPTION: Diagrama de secuencia al lanzar la aplicación.
 #+NAME:   fig:launch
 [[./imgs/launch.png]]
+
+A continuación, un diagrama de secuencia a modo de ejemplo, de un caso
+de uso de la aplicación en la que se ejecutan la mayoría de las
+señales implementadas en el proyecto. Este caso es la carga de un
+archivo de comandos G-Code desde la ventana de modo de operación.
+
+#+CAPTION: Diagrama de secuencia para la carga de un archivo de comandos G-Code desde la ventana de modo de operación.
+#+NAME: fig:upload
+[[./imgs/file_upload.png]]
 
 * Sonido
 La simulación realiza una señal sonora cada vez que el robot inicia un
