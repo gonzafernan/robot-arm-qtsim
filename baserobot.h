@@ -91,7 +91,7 @@ class BaseRobot : public QObject {
 
         QParallelAnimationGroup *currentAnimation = nullptr;
 
-        enum estado{INACTIVE, ACTIVE, RUNNING} estado = INACTIVE;
+        enum estado{INACTIVE, ACTIVE, RUNNING} estado = ACTIVE;
 
         void emptyInstruct();
 

@@ -132,8 +132,6 @@ void BaseRobot::interpreteComando(std::string comando){
 }
 
 void BaseRobot::start(){
-    // Alarma
-    QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
     this->interpreteComando(this->instruct.front());
     this->instruct.pop();
 }
@@ -158,6 +156,8 @@ void BaseRobot::turnOFF(){
 void BaseRobot::gdl1Changed(int value){
     if (this->estado == ACTIVE){
         std::cout << "GDL1: " << value << std::endl;
+        // Alarma
+        QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
 
         this->p2->setAxis(0, QVector3D(0, 1, 0));
         this->p3->setAxis(0, QVector3D(0, 1, 0));
@@ -179,6 +179,9 @@ void BaseRobot::gdl1Changed(int value){
 void BaseRobot::gdl2Changed(int value){
     if (this->estado == ACTIVE){
         std::cout << "GDL2: " << value << std::endl;
+        // Alarma
+        QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
+
         float axisX = float(m_sin(double(this->p2->getAngle(0))));
         float axisY = 0.0f;
         float axisZ = float(m_cos(double(this->p2->getAngle(0))));
@@ -203,6 +206,9 @@ void BaseRobot::gdl2Changed(int value){
 void BaseRobot::gdl3Changed(int value){
     if (this->estado == ACTIVE){
         std::cout << "GDL3: " << value << std::endl;
+        // Alarma
+        QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
+
         // El casteo de las siguientes lineas debe corregirse
         double aux = - PIEZA3_LONG * m_sin(this->p3->getAngle(0));
         float auxX = static_cast<float>(this->p1->getPoint().x()) + 2.0f * static_cast<float>(m_cos(this->p2->getAngle(0)));

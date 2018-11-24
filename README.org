@@ -233,3 +233,7 @@ dentro del IDE diseñar las ventanas de una forma más didáctica y
 facilita la tarea con la herramienta /Design/. 
 
 ** Diagrama de secuencia temporal
+* Sonido
+La simulación realiza una señal sonora cada vez que el robot inicia un
+movimiento de rotación en alguno de sus grados de libertad. Esta
+alarma sonora puede encontrarse en [[./assets/sound.wav]].
