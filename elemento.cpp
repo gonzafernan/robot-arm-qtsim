@@ -8,7 +8,7 @@ Elemento::Elemento(Qt3DCore::QEntity *rootEntity, QUrl url)
 
     float global_scale = 1.0f;
     float global_positionX = 0.0f;
-    float global_positionY = -10.0f;
+    float global_positionY = 0.0f;
     float global_positionZ = 0.0f;
 
     this->transform = new Qt3DCore::QTransform();
