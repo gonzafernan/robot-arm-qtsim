@@ -243,6 +243,13 @@ dentro del IDE diseñar las ventanas de una forma más didáctica y
 facilita la tarea con la herramienta /Design/. 
 
 ** Diagrama de secuencia temporal
+El orden de instanciación de objetos al lanzar o ejecutar la
+aplicación es como el que sigue:
+[[
+#+CAPTION: Diagrama de secuencia al lanzar la aplicación.
+#+NAME:   fig:launch
+./imgs/launch.png
+]]
 * Sonido
 La simulación realiza una señal sonora cada vez que el robot inicia un
 movimiento de rotación en alguno de sus grados de libertad. Esta
