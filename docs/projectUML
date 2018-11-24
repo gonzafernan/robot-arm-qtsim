@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI xmlns:UML="http://schema.omg.org/spec/UML/1.4" xmi.version="1.2" timestamp="2018-11-23T19:27:32" verified="false">
+<XMI xmlns:UML="http://schema.omg.org/spec/UML/1.4" xmi.version="1.2" timestamp="2018-11-24T03:21:39" verified="false">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -440,7 +440,7 @@
      </UML:Namespace.ownedElement>
      <XMI.extension xmi.extender="umbrello">
       <diagrams resolution="96">
-       <diagram showattribassocs="1" showstereotype="1" linewidth="0" snapcsgrid="0" xmi.id="uQpcG2l44raB1" documentation="" showpubliconly="0" snapgrid="0" canvasheight="1097.97" showatts="1" showopsig="1" name="diagrama de clases" type="1" localid="-1" zoom="61" font="Noto Sans,10,-1,5,50,0,0,0,0,0" fillcolor="#ffff00" usefillcolor="1" textcolor="#000000" isopen="1" canvaswidth="1632.32" snapx="25" linecolor="#ff0000" showops="1" griddotcolor="#d3d3d3" showpackage="1" backgroundcolor="#ffffff" snapy="25" showattsig="1" showgrid="0" showscope="1">
+       <diagram showattribassocs="1" showstereotype="1" linewidth="0" snapcsgrid="0" xmi.id="uQpcG2l44raB1" documentation="" showpubliconly="0" snapgrid="0" canvasheight="1097.97" showatts="1" showopsig="1" name="diagrama de clases" type="1" localid="-1" zoom="70.14999999999998" font="Noto Sans,10,-1,5,50,0,0,0,0,0" fillcolor="#ffff00" usefillcolor="1" textcolor="#000000" isopen="1" canvaswidth="1632.32" snapx="25" linecolor="#ff0000" showops="1" griddotcolor="#d3d3d3" showpackage="1" backgroundcolor="#ffffff" snapy="25" showattsig="1" showgrid="0" showscope="1">
         <widgets>
          <datatypewidget linewidth="0" width="44" usesdiagramfillcolor="0" fillcolor="#ffff00" showstereotype="1" linecolor="#ff0000" usefillcolor="1" autoresize="1" x="-106.901" localid="uXEdhWX9p82Su" xmi.id="uRLNKgwKZzi4S" textcolor="#000000" y="-391.539" height="36" font="Noto Sans,10,-1,5,50,0,0,0,0,0" usesdiagramusefillcolor="0" isinstance="0"/>
          <classwidget showopsigs="601" showstereotype="1" linewidth="0" showattsigs="601" xmi.id="uvq7YhqIkIcpv" showoperations="1" showpubliconly="0" showattributes="1" usesdiagramfillcolor="0" x="-977.885" localid="uq3ocl4PyV1jX" font="Noto Sans,10,-1,5,50,0,0,0,0,0" y="-178.352" fillcolor="#ffff00" usefillcolor="1" textcolor="#000000" autoresize="1" width="359" linecolor="#ff0000" isinstance="0" showpackage="1" height="504" usesdiagramusefillcolor="0" showscope="1"/>
@@ -601,7 +601,7 @@
          </assocwidget>
         </associations>
        </diagram>
-       <diagram showattribassocs="1" showstereotype="1" linewidth="0" snapcsgrid="0" xmi.id="ujDzMEsood222" documentation="" showpubliconly="0" snapgrid="0" canvasheight="0" showatts="1" showopsig="1" name="proyectoSECUENCIA" type="3" localid="-1" zoom="28.42624120401457" font="Noto Sans,10,-1,5,50,0,0,0,0,0" fillcolor="#ffff00" usefillcolor="1" textcolor="#000000" isopen="1" canvaswidth="0" snapx="25" linecolor="#ff0000" showops="1" griddotcolor="#d3d3d3" showpackage="1" backgroundcolor="#ffffff" snapy="25" showattsig="1" showgrid="0" autoincrementsequence="0" showscope="1">
+       <diagram showattribassocs="1" showstereotype="1" linewidth="0" snapcsgrid="0" xmi.id="ujDzMEsood222" documentation="" showpubliconly="0" snapgrid="0" canvasheight="0" showatts="1" showopsig="1" name="proyectoSECUENCIA" type="3" localid="-1" zoom="28" font="Noto Sans,10,-1,5,50,0,0,0,0,0" fillcolor="#ffff00" usefillcolor="1" textcolor="#000000" isopen="1" canvaswidth="0" snapx="25" linecolor="#ff0000" showops="1" griddotcolor="#d3d3d3" showpackage="1" backgroundcolor="#ffffff" snapy="25" showattsig="1" showgrid="0" autoincrementsequence="0" showscope="1">
         <widgets/>
         <messages/>
         <associations/>
@@ -625,7 +625,7 @@
   </UML:Model>
  </XMI.content>
  <XMI.extensions xmi.extender="umbrello">
-  <docsettings uniqueid="ujDzMEsood222" documentation="" viewid="ujDzMEsood222"/>
+  <docsettings uniqueid="ujDzMEsood222" documentation="" viewid="uQpcG2l44raB1"/>
   <listview>
    <listitem id="Views" type="800" open="1">
     <listitem id="Entity_Relationship_Model" type="836" open="1"/>

@@ -32,31 +32,15 @@ class Controller : public QObject {
         void setTarget(Qt3DCore::QTransform *target);
         Qt3DCore::QTransform *target() const;
 
-        /*
-         * Sobrecarga de métodos debido a un determinado error,
-         * analizar más adelante el motivo de ésto.
-         */
         void setAngle(float angle);
-        void setAngle(int n, float angle);
 
         float angle() const;
-        float angle(int n);
 
         void setAxis(QVector3D naxis);
-        void setAxis(int n, QVector3D naxis);
         void setPoint(QVector3D npoint);
-        void setPoint(int n, QVector3D npoint);
 
         QVector3D getAxis();
-        QVector3D getAxis(int n);
         QVector3D getPoint();
-        QVector3D getPoint(int n);
-
-        void setPreviousAxis(QVector3D axis[3]);
-        void setPreviousPoint(QVector3D point[3]);
-        void setPreviousAngle0(float angle);
-        void setPreviousAngle1(float angle);
-        void setPreviousAngle2(float angle);
 
     signals:
         void targetChanged();
@@ -73,10 +57,6 @@ class Controller : public QObject {
         // Parámetros del sistema de referencia para la rotación
         QVector3D axis;
         QVector3D point;
-
-        float previousAngle[3];
-        QVector3D previousAxis[3];
-        QVector3D previousPoint[3];
 };
 
 QT_END_NAMESPACE

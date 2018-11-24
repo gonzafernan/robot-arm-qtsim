@@ -19,11 +19,13 @@ Elemento::Elemento(Qt3DCore::QEntity *rootEntity, QUrl url)
     //this->material->setDiffuse(QColor(QRgb(0xa69929)));
     this->material->setDiffuse(QColor(QRgb(0xb2b4b5)));
 
-    this->controller = new Controller(this->transform);
-    this->controller->setTarget(this->transform);
-
     this->animation = new QPropertyAnimation(this->transform);
-    this->animation->setTargetObject(this->controller);
+
+    for (int i=0; i<3; i++){
+        this->cont[i] = new Controller(this->transform);
+        this->cont[i]->setTarget(this->transform);
+        this->animation->setTargetObject(this->cont[i]);
+    }
 
     update(m_rootEntity);
 }
@@ -38,7 +40,8 @@ void Elemento::update(Qt3DCore::QEntity *root_entity){
     this->entity->addComponent(this->transform);
 }
 
-QPropertyAnimation *Elemento::animate(int start, int end, int duration){
+QPropertyAnimation *Elemento::animate(int start, int end, int duration, int n){
+    this->animation->setTargetObject(this->cont[n]);
     this->animation->setPropertyName("angle");
     this->animation->setStartValue(QVariant::fromValue(start));
     this->animation->setEndValue(QVariant::fromValue(end));
@@ -47,36 +50,20 @@ QPropertyAnimation *Elemento::animate(int start, int end, int duration){
     return this->animation;
 }
 
-void Elemento::setAxis(QVector3D naxis){
-    this->controller->setAxis(naxis);
-}
-
 void Elemento::setAxis(int n, QVector3D naxis){
-    this->controller->setAxis(n, naxis);
-}
-
-void Elemento::setPoint(QVector3D npoint){
-    this->controller->setPoint(npoint);
+    this->cont[n]->setAxis(naxis);
 }
 
 void Elemento::setPoint(int n, QVector3D npoint){
-    this->controller->setPoint(n, npoint);
-}
-
-QVector3D Elemento::getAxis(){
-    return this->controller->getAxis();
+    this->cont[n]->setPoint(npoint);
 }
 
 QVector3D Elemento::getAxis(int n){
-    return this->controller->getAxis(n);
-}
-
-QVector3D Elemento::getPoint(){
-    return this->controller->getPoint();
+    return this->cont[n]->getAxis();
 }
 
 QVector3D Elemento::getPoint(int n){
-    return this->controller->getPoint(n);
+    return this->cont[n]->getPoint();
 }
 
 int Elemento::getAngle(int n){
@@ -95,22 +82,10 @@ void Elemento::setAngle(int n, int value){
     } else {
         this->duration = static_cast<int>(INFINITY);
     }
-
-    switch (n) {
-    case 0:
-        this->controller->setPreviousAngle0(value);
-        break;
-    case 1:
-        this->controller->setPreviousAngle1(value);
-        break;
-    case 2:
-        this->controller->setPreviousAngle2(value);
-        break;
-    }
 }
 
-float Elemento::getCurrentAngle(){
-    return this->controller->angle();
+float Elemento::getCurrentAngle(int n){
+    return this->cont[n]->angle();
 }
 
 double Elemento::getVel(){
