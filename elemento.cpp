@@ -15,8 +15,9 @@ Elemento::Elemento(Qt3DCore::QEntity *rootEntity, QUrl url)
     this->transform->setScale(global_scale);
     this->transform->setTranslation(QVector3D(global_positionX, global_positionY, global_positionZ));
 
-    this->material = new Qt3DExtras::QPhongMaterial();
-    this->material->setDiffuse(QColor(QRgb(0xa69929)));
+    this->material = new Qt3DExtras::QPhongMaterial(); 
+    //this->material->setDiffuse(QColor(QRgb(0xa69929)));
+    this->material->setDiffuse(QColor(QRgb(0xb2b4b5)));
 
     this->controller = new Controller(this->transform);
     this->controller->setTarget(this->transform);

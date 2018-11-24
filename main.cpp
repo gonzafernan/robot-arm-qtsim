@@ -23,7 +23,7 @@ int main(int argc, char **argv){
     floorEntity->addComponent(floorMaterial);
 
     Qt3DExtras::Qt3DWindow *view = new Qt3DExtras::Qt3DWindow();
-    view->defaultFrameGraph()->setClearColor(QColor(QRgb(0x4d4d4f)));
+    view->defaultFrameGraph()->setClearColor(QColor(QRgb(0x161718)));
     QWidget *container = QWidget::createWindowContainer(view);
     QSize screenSize = view->screen()->size();
     container->setMinimumSize(QSize(200, 100)); // Darle un mínimo
@@ -47,7 +47,6 @@ int main(int argc, char **argv){
     // Camera
     Qt3DRender::QCamera *cameraEntity = view->camera();
 
-    // REVISAR LA CONFIGURACION DE LA CAMARA!!
     cameraEntity->lens()->setPerspectiveProjection(75.0f, 16.0f/9.0f, 0.1f, 1000.0f);
     cameraEntity->setPosition(QVector3D(0.0f, 10.0f, 20.0f));
     cameraEntity->setUpVector(QVector3D(0, 1, 0));
