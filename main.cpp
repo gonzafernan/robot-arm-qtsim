@@ -1,4 +1,5 @@
 #include <QGuiApplication>
+#include <Qt3DExtras/QPlaneMesh>
 
 #include "baserobot.h"
 #include "widget.h"
@@ -8,6 +9,18 @@ int main(int argc, char **argv){
 
     BaseRobot *br = new BaseRobot();
     Qt3DCore::QEntity *scene = br->init();
+
+    // Floor
+    Qt3DCore::QEntity *floorEntity = new Qt3DCore::QEntity(scene);
+    Qt3DExtras::QPlaneMesh *floorMesh = new Qt3DExtras::QPlaneMesh();
+    Qt3DCore::QTransform *floorTransform = new Qt3DCore::QTransform();
+    floorTransform->setScale(100);
+    floorTransform->setTranslation(QVector3D(0, 0, 0));
+    Qt3DExtras::QPhongMaterial *floorMaterial = new Qt3DExtras::QPhongMaterial();
+    floorMaterial->setDiffuse(QColor(QRgb(0x999999)));
+    floorEntity->addComponent(floorMesh);
+    floorEntity->addComponent(floorTransform);
+    floorEntity->addComponent(floorMaterial);
 
     Qt3DExtras::Qt3DWindow *view = new Qt3DExtras::Qt3DWindow();
     view->defaultFrameGraph()->setClearColor(QColor(QRgb(0x4d4d4f)));
