@@ -236,4 +236,5 @@ facilita la tarea con la herramienta /Design/.
 * Sonido
 La simulación realiza una señal sonora cada vez que el robot inicia un
 movimiento de rotación en alguno de sus grados de libertad. Esta
-alarma sonora puede encontrarse en [[./assets/sound.wav]].
+alarma sonora puede encontrarse en [[./assets/sound.wav]]. Este sonido se
+puede implementar haciendo uso de la clase /QSound/ que provee el framework.
