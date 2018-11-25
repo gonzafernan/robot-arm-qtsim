@@ -472,11 +472,9 @@ GNU General Public License v3.0.
 RobotArm-Simulation
 
 * Bibliografía
-- Modelo 3D del robot: [[https://grabcad.com/library/mitsubishi-rv-6s-1][Mitsubishi RV-6S Industrial MELFA
-Series]]
+- Modelo 3D del robot: https://grabcad.com/library/mitsubishi-rv-6s-1
 - Dudas con C++: [[https://en.cppreference.com/w/][CppReference.com]], [[https://stackoverflow.com/][StackOverflow]]
-- A fines prácticos, y no mencionar cadda clase utilizada, toda la
-información para poder realizar el proyecto en el framework Qt, se
+- A fines prácticos, y no mencionar cadda clase utilizada, toda la información para poder realizar el proyecto en el framework Qt, se
 obtuvo de la documentación oficial: [[https://www.qt.io/][Qt]]
 - Librería para versión web: [[https://threejs.org/][three.js]]
 - Recursos para /backend/ de versión web: [[https://nodejs.org/en/][Node.js]]
