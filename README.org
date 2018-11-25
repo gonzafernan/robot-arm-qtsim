@@ -370,4 +370,9 @@ procesamiento se hace en el /backend/, pero el rendimiento de la
 aplicación podía incrementarse mucho si la aplicación fuera nativa e
 implementada completamente en /C++/. Es por eso que se llegó a la
 versión expuesta al principio de éste informe, donde a pesar de poseer
-muchos /bugs/ en la animación del robot, es notable la diferencia de desempeño.
+muchos /bugs/ en la animación del robot, es notable la diferencia de
+desempeño.
+
+* [[./LICENSE][Licencia]]
+GNU General Public License v3.0.
+
