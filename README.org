@@ -319,7 +319,7 @@ Inmediatamente surgió que la respuesta es trabajar el proyecto con
 multiplataforma, open-source, para la capa del servidor, basado en el
 lenguaje de programación ECMAScript, asíncrono, con I/O de datos en
 una arquitectura orientada a eventos y basado en el motor V8 de
-Google/" - Wikipedia, La enciclopedia libre. Es posible la creación de
+Google/" - [[https://es.wikipedia.org/wiki/Node.js][Wikipedia, La enciclopedia libre]]. Es posible la creación de
 "/addons/" implementados en C++, que por medio de herramientas
 facilitadas por /node/ y otras librerías de /javascript/ permiten el
 llamado de estas funciones en /C++/ desde código escrito en
