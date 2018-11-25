@@ -436,6 +436,47 @@ versión expuesta al principio de éste informe, donde a pesar de poseer
 muchos /bugs/ en la animación del robot, es notable la diferencia de
 desempeño.
 
+** Dificultades presentadas
+*** Modelo 3D
+Que el diseño del robot sea de un tercero, y el poco conocimiento en
+software para modelado 3D dificultó el manejo de dimensiones del
+robot, de modo que se tuvo que "/hardcodear/" la posición de los
+puntos y ejes por los que debe realizarse la rotación de los
+diferentes grados de libertad.
+*** Framework
+La experiencia con el framework fue diferente a otras. El inicio es
+muy duro, la dificultad para arrancar desde cero es notable. Sin
+embargo, una vez que se aprenden y dominan los aspectos fundamentales,
+es realmente impresionante el potencial del framework. De hecho,
+animar el robot tuvo un grado de dificultad mucho mayor al de las
+otras opciones, y es por eso que a la fecha de entrega el proyecto
+tiene muchos errores en este aspecto. Pero, leyendo la documentación y
+comentándolo en el grupo, se reconoció el potencial, por ejemplo, de
+la clase /QTransform/. Teniendo conocimientos de la cátedra /Robótica
+I/ es posible realizar las operaciones necesarias con la clase
+de modo de obtener una simulación muy fina y precisa, respetando toda
+la física implicada.
+* A futuro
+- Corregir errores.
+- Planear un diseño aún más enfocado en el modelo de capas.
+- Realizar una versión web y publicarla.
+- Construir robot físico y vincular a cátedra /Microcontroladores y
+  Electrónica de Potencia/, de modo de tener un entorno virtual y
+  físico del robot.
+- Realizar diseño 3D propio.
+- Continuar, ahora con mayor dominio del framework utilizado.
 * [[./LICENSE][Licencia]]
 GNU General Public License v3.0.
 
+* [[https://github.com/FernandezGFG/RobotArm-Simulation][Repositorio GitHub]]
+RobotArm-Simulation
+
+* Bibliografía
+- Modelo 3D del robot: [[https://grabcad.com/library/mitsubishi-rv-6s-1][Mitsubishi RV-6S Industrial MELFA
+Series]]
+- Dudas con C++: [[https://en.cppreference.com/w/][CppReference.com]], [[https://stackoverflow.com/][StackOverflow]]
+- A fines prácticos, y no mencionar cadda clase utilizada, toda la
+información para poder realizar el proyecto en el framework Qt, se
+obtuvo de la documentación oficial: [[https://www.qt.io/][Qt]]
+- Librería para versión web: [[https://threejs.org/][three.js]]
+- Recursos para /backend/ de versión web: [[https://nodejs.org/en/][Node.js]]
