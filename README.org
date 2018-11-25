@@ -270,7 +270,7 @@ la ventana de modo de operación o de uso.
 
 #+CAPTION: Diagrama de actividad para la selección de un archivo de instrucciones G-Code desde la ventana de modo de operación o de uso.
 #+NAME: fig:actividad
-[[./imgs/diagramaACTIVIDAD.img]]
+[[./imgs/diagramaACTIVIDAD.png]]
 
 * Sonido
 La simulación realiza una señal sonora cada vez que el robot inicia un
