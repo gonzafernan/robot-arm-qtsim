@@ -126,10 +126,73 @@ En la parte inferior de la ventana se encuentran dos botones,
 "Aceptar" y "Cancelar". El botón Aceptar cargará el programa
 seleccionado y lo ejecutará, El botón Cancelar cerrará la ventana sin
 que ninguna acción suceda.
-* Descripción del control de la simulación
+* Características del lenguaje y framework utilizado
 Como se mencionó antes, el proyecto está desarrollado en C++ basado en el framework Qt5,
 específicamente la versión 5.11.\\
-** Diagrama UML
+Se aplicó la mayor parte de los conceptos
+aprendidos en clases: /abstracción/, /modularidad/, /encapsulamiento/,
+otros más específicos como /herencia/, /agregación/ y /composición/,
+/constructores/ y /destructores/, /polimorfismo/, /sobrecarga de
+métodos/, etc. Por extensión del documento, se decide exponer a
+continuación una característica del framework que no se dió en clases
+y por lo tanto puede resultar más enriquecedor. Todo los conocimientos
+adquiridos del framework Qt fueron obtenidos gracias a su
+[[https://www.qt.io/][documentación]].\\
+El framework posee librerías que brindan las herramientas para
+conectar diferentes clases mediante la emisión y recepción de
+señales, esto se denomins *SIGNALS y SLOTS*. El gran potencial de ésto es que hay señales que son emitidas
+y están implícitas en la librería del framework (y no explícitas en la
+implementación), que se pueden utilizar de la dorma que se expone a
+continuación:\\
+Dando como ejemplo un caso utilizado. La clase /BaseRobot/ es de la forma:
+#+BEGIN_SRC cpp
+  // baserobot.h
+  #include <QObject>
+
+  class BaseRobot : public QObject {
+  public:
+    ...
+  public slots:
+    void endReceiver();
+  }
+#+END_SRC
+El método endReceiver implementato en [[./baserobot.cpp]], recibe la señal
+/finished()/ perteneciente a la clase /QPropertyAnimation/ propia del
+framework. Esta señal se emite cada vez que un clip de animación
+asociado (en este caso la animación de un movimiento del robot)
+finaliza. En el programa se utiliza para saber cuando ejecutar la
+siguiente instrucción en la cola. Para conectar la animación con el
+/SLOT/ /endReceiver()/, se utiliza la función /connect()/ de la
+siguiente dorma:
+#+BEGIN_SRC cpp
+  // baserobot.cpp
+  #include "baserobot.h"
+
+  void BaseRobot::externalGdl1(int value){
+    if (this->estado == ACTIVE){
+	  QParallelAnimationGroup *motion = new QParallelAnimationGroup();
+	  this->gdl1Changed(value);
+
+	  motion->addAnimation(this->p2->animate(this->p2->getPrevious_angle(0), this->p2->getAngle(0), this->p2->getDuration(), 0));
+	  ...
+	  
+	  connect(motion, &QParallelAnimationGroup::finished, this, &BaseRobot::endReceiver);
+	  motion->start();
+	  this->estado = RUNNING;
+      }
+  }
+#+END_SRC 
+El objeto /motion/ es de la clase /QParallelAnimation/, y contiene el
+conjunto de animaciones a ejecutar al cambiar el primer grado de
+libertad. Como puede observarse la función /connect()/ recibe 4
+argumentos: el objeto que envía la señal (/motion/), la dirección de
+la declaración de la señal a conectar (/finished/), el objeto que
+recibe la señal (/BaserRobot/, es decir, /this/), y por último la
+dirección de la declaración del slot a conectar (/endReceiver()/). Una
+vez configurado ésto, cada vez que se emita la señal /finished()/ de
+parte de /motion/, se ejecutará la función /endReceiver()/.\\
+Para una explicación más clara y profunda, ir a la [[http://doc.qt.io/qt-5/signalsandslots.html][documentación oficial]].
+* Diagrama UML
 El diagrama UML de la figura fue realizado con el software /Umbrello
 UML Modeller/. Es provisorio ya que todavía está sujeto a cambios,
 pero estos cambios no provocarías grandes modificaciones en la
@@ -242,7 +305,7 @@ propia del framework como /QObject/. La librería /QWidget/ permite
 dentro del IDE diseñar las ventanas de una forma más didáctica y
 facilita la tarea con la herramienta /Design/. 
 
-** Diagrama de secuencia temporal
+* Diagrama de secuencia temporal
 Los diagramas de secuencia expuestos a continuación, fueron realizados
 al igual que el diagrama UML, con el software /Umbrello UML
 Modeller/.\\
@@ -262,7 +325,7 @@ archivo de comandos G-Code desde la ventana de modo de operación.
 #+NAME: fig:upload
 [[./imgs/file_upload.png]]
 
-** Diagrama de actividad
+* Diagrama de actividad
 El diagrama de actividad también se obtiene del mismo archivo en el
 que se realizó el diagrama UML y de secuencia. Se plantea para el
 mismo caso de la ejecución de un archivo de instrucciones G-Code desde
@@ -278,7 +341,6 @@ movimiento de rotación en alguno de sus grados de libertad. Esta
 alarma sonora puede encontrarse en [[./assets/sound.wav]]. Este sonido se
 puede implementar haciendo uso de la clase /QSound/ que provee el
 framework.
-
 * Comentarios y conclusiones
 ** Versión para navegador web. HTML5 y Javascript
 En el inicio del proyecto se presentó gran dificultad para aprender y
