@@ -11,7 +11,7 @@ efector final, a modo de simulación.
 * Requerimientos generales
 Dado que la cátedra es de programación orientada a objetos, la
 resolución del problema planteado está representada e
-implementada usando un *paradigma orientado a objetos*.\\
+implementada usando un *paradigma orientado a objetos*.
 Está diseñado utilizando un *modelo de capas*, de manera que la solución
 puede usarse independientemente de que haya interfaz gráfica o de
 consola.
@@ -32,7 +32,7 @@ es uno similar al modelo *Mitsubishi RV-2AJ*.
 
 ** Modelo 3D del robot
 La solución propuesta para la vista del robot en la interfaz, es que
-ésta sea 3D.\\
+ésta sea 3D.
 Buscando en la web, se encontró en la página [[https://grabcad.com/library][GrabCad Community]] un gran
 aporte de [[https://grabcad.com/filipe.barbosa-3][Filipe Barbosa]] de un robot [[https://grabcad.com/library/mitsubishi-rv-6s-1][Mitsubishi RV-6S Industrial MELFA
 Series]] que responde al modelo RRR.
@@ -71,30 +71,31 @@ utilizando la librería /Qt3DCore/.
 ** Controles de cámara en la interfaz
 Los controles configurados para la interfaz fueron tipo /Orbit
 Controllers/, donde se hace zoom con el scroll del mouse, se traslada
-con el click izquierdo y se rota con el click derecho.\\
+con el click izquierdo y se rota con el click derecho.
+
 [[./vids/camera_control.gif]]
 ** Panel de control
-
+[[./vids/aplicacion.gif]]
 *** Ventana principal
 El panel de control consiste en una ventana principal (clase
 /Widget/), con botones que permiten el encendido y apagado del
 robot.
 El encendido procede automáticamente con un secuencia de movimientos
 de homing. La acción de apagado frenará el robot en la posición en que
-esté, dandole un estado inactivo.\\
+esté, dandole un estado inactivo.
 Esta ventana principal también posee un cuadro de texto indicador del
 estado global del robot (encendido o apagado) y otros dos cuadros de
 texto que proveen la información del ángulo en que se encuentra cada
 articulación, su velocidad relativa, e información de la
-configuración del efector final.\\
+configuración del efector final.
 Los botones "Establecer características iniciales", "Cargar archivo de
 comandos" y "Comenzar movimiento" abren las otras respectivas
-ventanas.\\
+ventanas.
 En el inferior de la ventana se encuentra el botón salir para cerrar
 ésta.
 *** Características
 Desde la ventana principal, si se presiona el botón "Establecer
-características iniciales", se abre la ventana de "Características".\\
+características iniciales", se abre la ventana de "Características".
 En esta ventana el usuario puede introducir los parámetros que desee
 del robot: Ángulos de las articulaciones y sus respectivas
 velocidades. Una vez introducidos estos parámetros,  cuando el usuario
@@ -108,27 +109,27 @@ principal, se abre la ventana de operación. Básicamente desde esta
 ventana el usuario tiene completo control sobre el robot, y puede
 moverlo ya sea introduciendo linea a linea comandos GCode en el cuadro
 de texto correspondiente o controlando ángulo y velocidad de cada
-articulación a través de los correspondientes sliders de la ventana.\\
+articulación a través de los correspondientes sliders de la ventana.
 En el inferior de la ventana se encuentra un botón para cargar un
-archivo de comandos GCode y otro para realizar homing del robot.\\
+archivo de comandos GCode y otro para realizar homing del robot.
 El botón "Terminar" cierra la ventana.
 
 *** Carga de archivo de comandos
 Si desde la ventana principal o desde la ventana de operación, el
 usuario presiona el botón para cargar archivo de comandos, se abrirá
-una ventana con dos cuadros de texto y una pestaña superior.\\
+una ventana con dos cuadros de texto y una pestaña superior.
 La pestaña superior "File" puede presionarse, y se abrirá el gestor de
 archivos correspondiente para que el usuario cargué su archivo de
 texto con el programa de instrucciones GCode que desee ejecutar. Una
 vez seleccionado, en un cuadro de texto de la ventana se pude observar
-una vista preliminar del archivo y en el otro la ruta de éste.\\
+una vista preliminar del archivo y en el otro la ruta de éste.
 En la parte inferior de la ventana se encuentran dos botones,
 "Aceptar" y "Cancelar". El botón Aceptar cargará el programa
 seleccionado y lo ejecutará, El botón Cancelar cerrará la ventana sin
 que ninguna acción suceda.
 * Características del lenguaje y framework utilizado
 Como se mencionó antes, el proyecto está desarrollado en C++ basado en el framework Qt5,
-específicamente la versión 5.11.\\
+específicamente la versión 5.11.
 Se aplicó la mayor parte de los conceptos
 aprendidos en clases: /abstracción/, /modularidad/, /encapsulamiento/,
 otros más específicos como /herencia/, /agregación/ y /composición/,
@@ -137,13 +138,13 @@ métodos/, etc. Por extensión del documento, se decide exponer a
 continuación una característica del framework que no se dió en clases
 y por lo tanto puede resultar más enriquecedor. Todo los conocimientos
 adquiridos del framework Qt fueron obtenidos gracias a su
-[[https://www.qt.io/][documentación]].\\
+[[https://www.qt.io/][documentación]].
 El framework posee librerías que brindan las herramientas para
 conectar diferentes clases mediante la emisión y recepción de
 señales, esto se denomins *SIGNALS y SLOTS*. El gran potencial de ésto es que hay señales que son emitidas
 y están implícitas en la librería del framework (y no explícitas en la
 implementación), que se pueden utilizar de la dorma que se expone a
-continuación:\\
+continuación:
 Dando como ejemplo un caso utilizado. La clase /BaseRobot/ es de la forma:
 #+BEGIN_SRC cpp
   // baserobot.h
@@ -190,7 +191,7 @@ la declaración de la señal a conectar (/finished/), el objeto que
 recibe la señal (/BaserRobot/, es decir, /this/), y por último la
 dirección de la declaración del slot a conectar (/endReceiver()/). Una
 vez configurado ésto, cada vez que se emita la señal /finished()/ de
-parte de /motion/, se ejecutará la función /endReceiver()/.\\
+parte de /motion/, se ejecutará la función /endReceiver()/.
 Para una explicación más clara y profunda, ir a la [[http://doc.qt.io/qt-5/signalsandslots.html][documentación oficial]].
 * Diagrama UML
 El diagrama UML de la figura fue realizado con el software /Umbrello
@@ -210,31 +211,31 @@ es la denominada /BaseRobot/, está clase es la encargada del manejo de
 datos y comunicación con la interfaz gráfica de usuario. Es por esto
 que la instanciación de BaseRobot en todo el proyecto es solo una, y
 se ve agregada en todas las diferentes clases relacionadas con la
-GUI.\\
+GUI.
 Esta clase,  como muchas otras en el proyecto, hereda de /QObject/
-librería perteneciente al framework utilizado.\\
+librería perteneciente al framework utilizado.
 En rasgos generales, tiene métodos para cargar archivo de texto con el
 programa G-Code a realizar, método para la ejecución de dicho
 programa gracias a otros de sus métodos más importantes que es el
 /interprete de comando/ que como su nombre indica, interpreta cada
 línea G-Code y la agraga a la cola de instrucciones (atributo de la
-clase).\\
+clase).
 BaseRobot es la clase que posee métodos para la variación de los datos
 correspondientes a la configuración del robot: sus ángulos y
 velocidades. También posee información del /estado/ de éste: /activo/,
 /inactivo/ y /en movimiento/, también información necesaria para la
 comunicación con el robot: dirección IP y puerto de comunicación
-(información no representativa para la simulación).\\
+(información no representativa para la simulación).
 Otros métodos importantes en esta clase permiten tanto el apagado y
 encendido del robot, como el comienzo de la ejecución de su cola de
-instrucciones.\\
+instrucciones.
 Respecto a la cola de instrucciones, como los movimientos del robot
 están dados por clips de animación, cuándo cada uno de los clips
 finaliza o, más general, cuándo una instrucción finaliza, se emite una
 señal que es recibida por la clase para eliminar la instrucción de la
 cola y continuar con la siguiente. También posee un método para
 limpiar dicha cola, ésto sucede cuándo se realiza una maniobra de
-/homing/ o cuándo se apaga la máuina.\\
+/homing/ o cuándo se apaga la máuina.
 Ésta clase agrega 4 objetos clase /Elemento/ y uno clase /Efector
 Final/ que contienen la información relacionada a cada pieza "física"
 del brazo.
@@ -244,18 +245,18 @@ La clase /Elemento/ es la clase encargada de albergar toda la
 información correspondiente a la pieza del brazo de su
 instanciación. Su constructor recibe como parámetro el /rootEntity/ de
 la entidad robot que se crea en BaseRobot. También hereda la librería
-/QObject/ al igual que /BaseRobot/.\\
+/QObject/ al igual que /BaseRobot/.
 Los parámetros de esta clase están muy relacionados al render de la
 pieza, del modelo /.obj/: un /mesh/ del modelo 3D en sí, un /material/
 que provee el framework,  una /animación/ con la que se trabajará para
 parametrizar los movimientos, una /transformación/, herramienta con la
 que se ejecutan las traslaciones y rotaciones del mesh y una /entidad/ propia a la que se le agregas
-los componentes anteriores.\\
+los componentes anteriores.
 Además de toda la información anterior, los métodos de la clase
 permiten el get y set de los puntos, ejes y ángulos necesarios para
 definir la configuración de la pieza. Otros métodos dan la
 configuración de la animación, como la duración de ésta en base a la
-velocidad seteada.\\
+velocidad seteada.
 Cada elemento agrega un objeto clase /Controller/ que se describe más
 adelante.
 
@@ -274,17 +275,17 @@ transformación de los mesh de cada parte del robot. Esta manipulación
 de la transformación es para dar los valores de la configuración de la
 pieza en cada /frame/ de la animación. Por lo tanto, hay métodos
 encadenados con métodos de la clase /Elemento/ correspondiente como los
-get y set de los puntos, ejes y ángulos de la pieza.\\
+get y set de los puntos, ejes y ángulos de la pieza.
 La función más importante de la clase /Controller/ es la que actualiza
 la matriz 4x4 característica de la transformación del elemento, donde
 está la información correspondiente a traslaciones y rotaciones
-ejecutadas sobre la pieza.\\
+ejecutadas sobre la pieza.
 Existen señales internas en la clase que informan el cambio en el
 ángulo o target seteado en la instanciación del controlador.
 
 *** ConjuntoInterfaz
 La clase /ConjuntoInterfaz/ es una superclase de todas aquellas
-relacionadas con la interfaz gráfica de usuario.\\
+relacionadas con la interfaz gráfica de usuario.
 Agrega a /BaseRobot/ y tiene como método una función que permite
 setear éste atributo con la instancia de /BaseRobot/
 correspondiente. Por lo que permite vincular a todas las clases
@@ -309,7 +310,7 @@ facilita la tarea con la herramienta /Design/.
 * Diagrama de secuencia temporal
 Los diagramas de secuencia expuestos a continuación, fueron realizados
 al igual que el diagrama UML, con el software /Umbrello UML
-Modeller/.\\
+Modeller/.
 El orden de instanciación de objetos al lanzar o ejecutar la
 aplicación es como el que sigue:
 
@@ -355,7 +356,7 @@ agresiva que arrancando desde cero. Se fue consciente de que esta
 decisión costaría mayor cantidad de tiempo de trabajo, pero con la
 ventaja de que si se venciera el plazo de entrega, el grupo dispondría de
 una solución que a pesar de no estar diseñada con las herramientas
-planteadas, cumpliría los requisitos básicos.\\
+planteadas, cumpliría los requisitos básicos.
 El framework Qt ofrece entre sus tantas plantillas de tipos de
 proyectos (canvas 3D, aplicación de consola, aplicación /mobile/,
 etc.), la posibilidad de realizar la parte gráfica de renderizado y
@@ -363,12 +364,12 @@ animación 3D con una librería de *javascript* muy conocida denominada
 [[https://threejs.org/][three.js]]. Como uno de los integrantes del grupo posee conocimientos
 básicos en /HTML5/ y /javascript/, y éste último también puede utilizarse con
 paradigma de objetos, se decidió utilizar esta librería en un entorno
-web,, suponiendo que mudarlo a Qt seía una opción viable.\\
+web,, suponiendo que mudarlo a Qt seía una opción viable.
 La experiencia con ésta librería fue muy buena, y hubo grandes avances
 en un corto periodo de tiempo: se pudo importar el modelo 3D, animar
 todas sus articulaciones, controlar éstas mediante /sliders/, colocar
 indicadores luminosos del estado del robot, y crear una interfaz de
-usuario muy básica en /HTML5/.\\
+usuario muy básica en /HTML5/.
 
 *** C++ addons para Node.js  
 Por más que va más alla del alcance del proyecto, se investigó como
@@ -376,7 +377,7 @@ realizar el control y cálculos matemáticos de la simulación del brazo
 robótico implementado con /C++/ en un entorno web donde los lenguajes de
 desarrollo, como ya se mencionó, son /HTML5/ y /Javascript/. Con palabras más claras, surgió la pregunta de cómo desarrolar una
 página web para la simulación, donde el /frontend/ esté implementado
-en /HTML5/ y /Javascript/, y el /backend/ con /C++/.\\
+en /HTML5/ y /Javascript/, y el /backend/ con /C++/.
 Inmediatamente surgió que la respuesta es trabajar el proyecto con
 [[https://nodejs.org/en/][Node.js]]. /"*Node.js* es un entorno en tiempo de ejecución
 multiplataforma, open-source, para la capa del servidor, basado en el
@@ -386,7 +387,7 @@ Google/" - [[https://es.wikipedia.org/wiki/Node.js][Wikipedia, La enciclopedia l
 "/addons/" implementados en C++, que por medio de herramientas
 facilitadas por /node/ y otras librerías de /javascript/ permiten el
 llamado de estas funciones en /C++/ desde código escrito en
-/Javascript/.\\
+/Javascript/.
 Esta solución era de una complejidad mayor a la esperada, así que se
 opto por comenzar el proceso de mudar el proyecto de su implementación
 con /three.js/ en un entorno web al framework Qt.
@@ -395,7 +396,7 @@ con /three.js/ en un entorno web al framework Qt.
  El proceso de mudar el proyecto desde un entorno web basado en
  /HTML5/ y /Javascript/ al framework Qt resultó ser relativamente
  sencillo, eligiendo la plantilla de proyecto "aplicación 3D basada en
- librería /three.js/.\\
+ librería /three.js/.
 El modo de trabajo es muy similar en aspectos generales a lo que se
  deseaba hacer con los /addons/ de /node/. En este caso el
  intermediario entre lenguajes /C++/ y /Javascript/ es /QML/. "*QML*
@@ -403,13 +404,13 @@ El modo de trabajo es muy similar en aspectos generales a lo que se
  /JavaScript/ creado para diseñar aplicaciones enfocadas a la interfaz
  de usuario. Es parte de /Qt Quick/, el kit de Interfaz de usuario
  creado por Digia junto al framework Qt." - [[https://es.wikipedia.org/wiki/QML][Wikipedia, la enciclopedia
- libre]].\\
+ libre]].
 El IDE de Qt, /QtCreator/, ofrece su herramienta /Design/ que sirve
  para facilitar el diseño gráfico generando automáticamente código QML
  o C++ según sea el caso. A partir de este código en QML se puede
  ejecutar como funciones en /javascript/, las implementadas para la
  versión anterior del proyecto, y obtener información de lo que sucede
- en los /scripts/ de /javascript/ en lenguaje /C++/.\\ 
+ en los /scripts/ de /javascript/ en lenguaje /C++/.
 Gracias a éstas herramientas, fue posible diseñar una aplicación de
  escritorio con una interfaz adecuada, pero aún utilizando el código
  escrito previamente. Los resultados de esta versión del proyecto se
