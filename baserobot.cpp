@@ -140,8 +140,9 @@ void BaseRobot::turnON(){
     std::cout << "ON" << std::endl;
     this->estado = ACTIVE;
     this->emptyInstruct();
-    this->instruct.push("G0A1P90");
-    this->instruct.push("G0A3P90");
+    this->instruct.push("G0A1P0");
+    this->instruct.push("G0A2P0");
+    this->instruct.push("G0A3P0");
     this->start();
 }
 
@@ -224,7 +225,7 @@ void BaseRobot::gdl3Changed(int value){
     if (this->estado == ACTIVE){
         std::cout << "GDL3: " << value << std::endl;
         // Alarma
-        QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
+        //QSound::play(QStringLiteral("qrc:/assets/sound.wav"));
         /*
         // El casteo de las siguientes lineas debe corregirse
         double aux = - PIEZA3_LONG * m_sin(this->p3->getAngle(0));
@@ -245,8 +246,8 @@ void BaseRobot::gdl3Changed(int value){
         this->p4->setAxis(2, QVector3D(0, 0, 1));
         this->ef->setAxis(2, QVector3D(0, 0, 1));
 
-        this->p4->setPoint(1, QVector3D(0.65 + 2.35, 9.1f, float(PIEZA3_LONG) + 10.0f));
-        this->ef->setPoint(1, QVector3D(0.65 + 2.35, 9.1f, float(PIEZA3_LONG) + 10.0f));
+        this->p4->setPoint(2, QVector3D(0.65 + 2.35, 9.1f + float(PIEZA3_LONG), 0));
+        this->ef->setPoint(2, QVector3D(0.65 + 2.35, 9.1f + float(PIEZA3_LONG), 0));
 
         this->p4->setAngle(2, value);
         this->ef->setAngle(2, value);
@@ -256,7 +257,7 @@ void BaseRobot::gdl3Changed(int value){
 
 void BaseRobot::externalGdl1(int value){
     if (this->estado == ACTIVE){
-        QParallelAnimationGroup *motion = new QParallelAnimationGroup;
+        QParallelAnimationGroup *motion = new QParallelAnimationGroup();
         this->gdl1Changed(value);
 
         motion->addAnimation(this->p2->animate(this->p2->getPrevious_angle(0), this->p2->getAngle(0), this->p2->getDuration(), 0));
@@ -273,7 +274,7 @@ void BaseRobot::externalGdl1(int value){
 
 void BaseRobot::externalGdl2(int value){
     if (this->estado == ACTIVE){
-        QParallelAnimationGroup *motion = new QParallelAnimationGroup;
+        QParallelAnimationGroup *motion = new QParallelAnimationGroup();
         this->gdl2Changed(value);
 
         motion->addAnimation(this->p3->animate(this->p3->getPrevious_angle(1), this->p3->getAngle(1), this->p3->getDuration(), 1));

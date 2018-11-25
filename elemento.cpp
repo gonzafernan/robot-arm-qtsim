@@ -89,7 +89,9 @@ int Elemento::getPrevious_angle(int n){
 void Elemento::setAngle(int n, int value){
     this->previous_angle[n] = this->angle[n];
     this->angle[n] = value;
-    if (this->vel > 0){
+    if (this->previous_angle[n] == this->angle[n]){
+        this->duration = 0;
+    } else if (this->vel > 0){
         this->duration = static_cast<int>(std::abs(this->angle[n] - this->previous_angle[n])*1000*(M_PI/180)/this->vel);
     } else {
         this->duration = static_cast<int>(INFINITY);

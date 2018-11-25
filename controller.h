@@ -44,8 +44,8 @@ class Controller : public QObject {
 
         float _Angle[3] = {0, 0, 0};
         float prevAngle[3] = {0, 0, 0};
-        QVector3D _Axis[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
-        QVector3D prevAxis[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
+        QVector3D _Axis[3] = {QVector3D(0, 1, 0), QVector3D(0, 0, 1), QVector3D(0, 0, 1)};
+        QVector3D prevAxis[3] = {QVector3D(0, 1, 0), QVector3D(0, 0, 1), QVector3D(0, 0, 1)};
         QVector3D _Point[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
         QVector3D prevPoint[3] = {QVector3D(0, 0, 0), QVector3D(0, 0, 0), QVector3D(0, 0, 0)};
 
