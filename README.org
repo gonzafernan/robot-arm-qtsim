@@ -329,4 +329,45 @@ opto por comenzar el proceso de mudar el proyecto de su implementación
 con /three.js/ en un entorno web al framework Qt.
 
 ** Versión con framework Qt, aplicación 3D. C++, QML y Javascript.
- 
+ El proceso de mudar el proyecto desde un entorno web basado en
+ /HTML5/ y /Javascript/ al framework Qt resultó ser relativamente
+ sencillo, eligiendo la plantilla de proyecto "aplicación 3D basada en
+ librería /three.js/.\\
+El modo de trabajo es muy similar en aspectos generales a lo que se
+ deseaba hacer con los /addons/ de /node/. En este caso el
+ intermediario entre lenguajes /C++/ y /Javascript/ es /QML/. "*QML*
+ (del inglés, /Qt Meta Language/) es un lenguaje basado en
+ /JavaScript/ creado para diseñar aplicaciones enfocadas a la interfaz
+ de usuario. Es parte de /Qt Quick/, el kit de Interfaz de usuario
+ creado por Digia junto al framework Qt." - [[https://es.wikipedia.org/wiki/QML][Wikipedia, la enciclopedia
+ libre]].\\
+El IDE de Qt, /QtCreator/, ofrece su herramienta /Design/ que sirve
+ para facilitar el diseño gráfico generando automáticamente código QML
+ o C++ según sea el caso. A partir de este código en QML se puede
+ ejecutar como funciones en /javascript/, las implementadas para la
+ versión anterior del proyecto, y obtener información de lo que sucede
+ en los /scripts/ de /javascript/ en lenguaje /C++/.\\ 
+Gracias a éstas herramientas, fue posible diseñar una aplicación de
+ escritorio con una interfaz adecuada, pero aún utilizando el código
+ escrito previamente. Los resultados de esta versión del proyecto se
+ encuentran en la carpeta [[./etc/]].
+
+** Versión con framework Qt. C++ puro. 
+La versión del proyecto previamente expuesta tuvo un visto bueno de
+parte del profesor previa a la entrega. Sin embargo, el grupo era
+consciente de que el lenguaje que se aprendió en la catedra
+/Programación Orientada a Objetos/ fue /C++/, y era altamente
+recomendado realizar la implementación del trabajo en éste
+lenguaje. Además, uno de los inconvenientes en la versión con QML del
+proyecto es que la animación, realizada por medio de la librería
+/three.js/ en /javascript/, con el control y GUI,  implementado en
+C++, estaban realmente disociados. Esta disociación no era una ventaja
+como uno esperaría de un diseño de capas, sino que realmente estaban
+desconectados llegando al punto en que una de las soluciones era
+actualizar toda la información en intervalos discretos de
+tiempo. Puede ser una opción en el planteo de una página web donde el
+procesamiento se hace en el /backend/, pero el rendimiento de la
+aplicación podía incrementarse mucho si la aplicación fuera nativa e
+implementada completamente en /C++/. Es por eso que se llegó a la
+versión expuesta al principio de éste informe, donde a pesar de poseer
+muchos /bugs/ en la animación del robot, es notable la diferencia de desempeño.
