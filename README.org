@@ -262,6 +262,16 @@ archivo de comandos G-Code desde la ventana de modo de operación.
 #+NAME: fig:upload
 [[./imgs/file_upload.png]]
 
+** Diagrama de actividad
+El diagrama de actividad también se obtiene del mismo archivo en el
+que se realizó el diagrama UML y de secuencia. Se plantea para el
+mismo caso de la ejecución de un archivo de instrucciones G-Code desde
+la ventana de modo de operación o de uso.
+
+#+CAPTION: Diagrama de actividad para la selección de un archivo de instrucciones G-Code desde la ventana de modo de operación o de uso.
+#+NAME: fig:actividad
+[[./imgs/diagramaACTIVIDAD.img]]
+
 * Sonido
 La simulación realiza una señal sonora cada vez que el robot inicia un
 movimiento de rotación en alguno de sus grados de libertad. Esta
