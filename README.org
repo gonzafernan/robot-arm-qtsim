@@ -203,6 +203,7 @@ son cambios que modificarían algunos métodos de la clase /BaseRobot/,
 #+CAPTION: Diagrama UML provisorio del proyecto.
 #+NAME:   fig:UML
 [[./imgs/diagramaUML.png]]
+* Descripción de clases
 *** BaseRobot
 Como puede observarse en el diagrama UML, la clase principal del proyecto
 es la denominada /BaseRobot/, está clase es la encargada del manejo de
