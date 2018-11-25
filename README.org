@@ -276,4 +276,57 @@ la ventana de modo de operación o de uso.
 La simulación realiza una señal sonora cada vez que el robot inicia un
 movimiento de rotación en alguno de sus grados de libertad. Esta
 alarma sonora puede encontrarse en [[./assets/sound.wav]]. Este sonido se
-puede implementar haciendo uso de la clase /QSound/ que provee el framework.
+puede implementar haciendo uso de la clase /QSound/ que provee el
+framework.
+
+* Comentarios y conclusiones
+** Versión para navegador web. HTML5 y Javascript
+En el inicio del proyecto se presentó gran dificultad para aprender y
+dominar el framework Qt. Dada esta dificultad, se decidió comenzar el
+proyecto con otras herramientas diferentes, y una vez avanzadas y
+terminadas ciertas etapas de diseño básico de la aplicación y esquemas
+generales del programa, proceder a mudar el proyecto dentro del
+framework con la esperanza de que partiendo sobre una base lo
+suficientemente sólida, adaptarse al framework sea de una manera menos
+agresiva que arrancando desde cero. Se fue consciente de que esta
+decisión costaría mayor cantidad de tiempo de trabajo, pero con la
+ventaja de que si se venciera el plazo de entrega, el grupo dispondría de
+una solución que a pesar de no estar diseñada con las herramientas
+planteadas, cumpliría los requisitos básicos.\\
+El framework Qt ofrece entre sus tantas plantillas de tipos de
+proyectos (canvas 3D, aplicación de consola, aplicación /mobile/,
+etc.), la posibilidad de realizar la parte gráfica de renderizado y
+animación 3D con una librería de *javascript* muy conocida denominada
+[[https://threejs.org/][three.js]]. Como uno de los integrantes del grupo posee conocimientos
+básicos en /HTML5/ y /javascript/, y éste último también puede utilizarse con
+paradigma de objetos, se decidió utilizar esta librería en un entorno
+web,, suponiendo que mudarlo a Qt seía una opción viable.\\
+La experiencia con ésta librería fue muy buena, y hubo grandes avances
+en un corto periodo de tiempo: se pudo importar el modelo 3D, animar
+todas sus articulaciones, controlar éstas mediante /sliders/, colocar
+indicadores luminosos del estado del robot, y crear una interfaz de
+usuario muy básica en /HTML5/.\\
+
+*** C++ addons para Node.js  
+Por más que va más alla del alcance del proyecto, se investigó como
+realizar el control y cálculos matemáticos de la simulación del brazo
+robótico implementado con /C++/ en un entorno web donde los lenguajes de
+desarrollo, como ya se mencionó, son /HTML5/ y /Javascript/. Con palabras más claras, surgió la pregunta de cómo desarrolar una
+página web para la simulación, donde el /frontend/ esté implementado
+en /HTML5/ y /Javascript/, y el /backend/ con /C++/.\\
+Inmediatamente surgió que la respuesta es trabajar el proyecto con
+[[https://nodejs.org/en/][Node.js]]. /"*Node.js* es un entorno en tiempo de ejecución
+multiplataforma, open-source, para la capa del servidor, basado en el
+lenguaje de programación ECMAScript, asíncrono, con I/O de datos en
+una arquitectura orientada a eventos y basado en el motor V8 de
+Google/" - Wikipedia, La enciclopedia libre. Es posible la creación de
+"/addons/" implementados en C++, que por medio de herramientas
+facilitadas por /node/ y otras librerías de /javascript/ permiten el
+llamado de estas funciones en /C++/ desde código escrito en
+/Javascript/.\\
+Esta solución era de una complejidad mayor a la esperada, así que se
+opto por comenzar el proceso de mudar el proyecto de su implementación
+con /three.js/ en un entorno web al framework Qt.
+
+** Versión con framework Qt, aplicación 3D. C++, QML y Javascript.
+ 
