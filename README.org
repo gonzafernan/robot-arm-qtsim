@@ -415,6 +415,8 @@ Gracias a éstas herramientas, fue posible diseñar una aplicación de
  escritorio con una interfaz adecuada, pero aún utilizando el código
  escrito previamente. Los resultados de esta versión del proyecto se
  encuentran en la carpeta [[./etc/]].
+[[./vids/homing.gif]]
+[[./vids/homing1.gif]]
 
 ** Versión con framework Qt. C++ puro. 
 La versión del proyecto previamente expuesta tuvo un visto bueno de
