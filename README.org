@@ -5,6 +5,9 @@ El presente trabajo se responde a lo solicitado como trabajo práctico
 integrador de la cátedra de *Programación Orientada a Objetos* de la
 /Facultad de Ingeniería/ de la /Universidad Nacional de Cuyo/,
 Mendoza, Argentina. Año 2018. Prof. Ing. César Aranda.
+
+[[https://www.youtube.com/watch?v=4ekSfEu83dY&feature=youtu.be]]
+
 * Objetivos
 El objetivo del trabajo consiste en controlar un robot de 3 grados de libertad con
 efector final, a modo de simulación.
