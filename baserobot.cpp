@@ -140,9 +140,9 @@ void BaseRobot::turnON(){
     std::cout << "ON" << std::endl;
     this->estado = ACTIVE;
     this->emptyInstruct();
-    this->instruct.push("G0A1P0");
-    this->instruct.push("G0A2P0");
-    this->instruct.push("G0A3P0");
+    this->instruct.push("G0A1P90");
+    //this->instruct.push("G0A2P0");
+    //this->instruct.push("G0A3P0");
     this->start();
 }
 
