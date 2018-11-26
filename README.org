@@ -25,7 +25,7 @@ Para la implementación de la interfaz de usuario, es requerido que sea
 gráfica, con interacción estándar mediante mouse y teclado. En este
 caso se utiliza las *librerías del framework Qt5*.
 
-* Robot simulado
+* Sobre el brazo robótico simulado
 El robot que se simula es un *modelo RRR*, lo que quiere decir que sus
 tres grados de libertad corresponden a rotaciones. El tipo propuesto
 es uno similar al modelo *Mitsubishi RV-2AJ*. 
@@ -68,7 +68,7 @@ Como ya se mencionó anteriormente, la interfaz gráfica de usuario se
 diseña utilizando librerías proveídas por Qt, en este caso las
 principales utilizadas son /QWidget/ y /QMainWindow/, y la ventana 3D
 utilizando la librería /Qt3DCore/.
-** Controles de cámara en la interfaz
+** Controles de cámara en ventana 3D
 Los controles configurados para la interfaz fueron tipo /Orbit
 Controllers/, donde se hace zoom con el scroll del mouse, se traslada
 con el click izquierdo y se rota con el click derecho.
@@ -164,7 +164,7 @@ asociado (en este caso la animación de un movimiento del robot)
 finaliza. En el programa se utiliza para saber cuando ejecutar la
 siguiente instrucción en la cola. Para conectar la animación con el
 /SLOT/ /endReceiver()/, se utiliza la función /connect()/ de la
-siguiente dorma:
+siguiente forma:
 #+BEGIN_SRC cpp
   // baserobot.cpp
   #include "baserobot.h"
